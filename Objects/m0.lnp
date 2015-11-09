@@ -1,14 +1,15 @@
 --cpu Cortex-M0
-".\objects\system_stm32f0xx.o"
-".\objects\startup_stm32f030.o"
 ".\objects\main.o"
 ".\objects\stm32f0xx_it.o"
+".\objects\startup_stm32f030.o"
+".\objects\system_stm32f0xx.o"
 ".\objects\stm32f0xx_adc.o"
 ".\objects\stm32f0xx_can.o"
 ".\objects\stm32f0xx_cec.o"
 ".\objects\stm32f0xx_comp.o"
 ".\objects\stm32f0xx_crc.o"
 ".\objects\stm32f0xx_crs.o"
+".\objects\stm32f0xx_dac.o"
 ".\objects\stm32f0xx_dbgmcu.o"
 ".\objects\stm32f0xx_dma.o"
 ".\objects\stm32f0xx_exti.o"
@@ -28,4 +29,4 @@
 --strict --scatter ".\Objects\m0.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Listings\m0.map" -o .\Objects\m0.axf
+--list ".\m0.map" -o .\Objects\m0.axf
