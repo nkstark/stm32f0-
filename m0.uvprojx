@@ -373,7 +373,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F030,USE_STDPERIPH_DRIVER,</Define>
               <Undefine></Undefine>
-              <IncludePath>.\cmsis\Include;.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc;.\cmsis;.\user</IncludePath>
+              <IncludePath>.\cmsis\Include;.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc;.\cmsis;.\user;.\HW_DRIVER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -980,6 +980,31 @@
               <FileName>stm32f0xx_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP</GroupName>
+          <Files>
+            <File>
+              <FileName>bmp280.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\bmp280.c</FilePath>
+            </File>
+            <File>
+              <FileName>bmp280_support.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\bmp280_support.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HW_DRIVER</GroupName>
+          <Files>
+            <File>
+              <FileName>bmp280_SPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HW_DRIVER\bmp280_SPI.c</FilePath>
             </File>
           </Files>
         </Group>
