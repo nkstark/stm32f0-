@@ -788,3 +788,7 @@ I (.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm
 I (.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_tim.h)(0x54808D10)
 I (.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x54808D11)
 I (.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x54808D10)
+F (.\user\bmp280.c)(0x5514F4FA)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\cmsis\Include -I.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc -I.\cmsis -I.\user-I C:\Users\nksta\Desktop\m0\git\RTE-I e:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include-I e:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F030 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\objects\bmp280.o --omf_browse .\objects\bmp280.crf --depend .\objects\bmp280.d)
+I (user\bmp280.h)(0x5514F4FA)
+F (.\user\bmp280_support.c)(0x5514F4FA)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\cmsis\Include -I.\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc -I.\cmsis -I.\user-I C:\Users\nksta\Desktop\m0\git\RTE-I e:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include-I e:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="516" -DSTM32F030 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\objects\bmp280_support.o --omf_browse .\objects\bmp280_support.crf --depend .\objects\bmp280_support.d)
+I (user\bmp280.h)(0x5514F4FA)
