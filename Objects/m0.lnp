@@ -29,6 +29,12 @@
 ".\objects\bmp280.o"
 ".\objects\bmp280_support.o"
 ".\objects\bmp280_spi.o"
+".\objects\bmp085.o"
+".\objects\bmp180.o"
+".\objects\bmp180_support.o"
+".\objects\delay.o"
+".\objects\i2c_soft.o"
+".\objects\led.o"
 --strict --scatter ".\Objects\m0.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
