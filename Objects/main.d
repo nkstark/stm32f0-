@@ -34,4 +34,4 @@
 .\objects\main.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\objects\main.o: .\HW_DRIVER\delay.h
 .\objects\main.o: .\HW_DRIVER\i2c_soft.h
-.\objects\main.o: .\HW_DRIVER\BMP085.h
+.\objects\main.o: .\HW_DRIVER\my_bmp180.h

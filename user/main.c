@@ -11,33 +11,41 @@
 #include "led.h"
 #include "delay.h"
 #include "i2c_soft.h"
-#include "BMP085.h"
+#include "my_bmp180.h"
 
 int32_t alt;
 uint8_t ID;
 uint8_t maxa[1];
 int main(void)
 {
-	
+	int n=0;
 	 bmp180_power();
 			led_init();
 	delay_init(48);
 	IIC_Init();
-			BMP085_init();
-			delay_ms(50);
+			BMP180_init();
+			delay_ms(500);
 
   while (1)
   {
-			LED_ON;
-		delay_ms(50);
-		LED_OFF;
-		BMP085_Routing();
+		n=200;
+		while(n)
+		{
+				BMP180_Routing();
 				delay_ms(50);
-//ID=IICreadBytes(0xef,0xd0,1,maxa);
-//		IIC_Start();
-//		IIC_Send_Byte(0xee);
-//		IIC_Wait_Ack();
-	alt=BMP085_test();
+			n--;
+		}
+		
+		BMP180_ResetAlt(0);
+		while(1)
+		{
+			LED_ON;
+		delay_ms(5);
+		LED_OFF;
+		BMP180_Routing();
+	delay_ms(100);
+BMP180_test();
+		}
   }
 }
 

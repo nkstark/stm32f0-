@@ -27,7 +27,7 @@ int32_t _cm_Offset, _Pa_Offset;
 int32_t _param_datum, _param_centimeters;
 volatile unsigned char BPM085_ST;
 int32_t last_Temperature,last_Pressure,last_Alt;
-int32_t  BMP085_FIFO[2][11]; //先进先出过滤器数组
+int32_t  BMP085_FIFO[2][11]; //先进先出过滤器数组 //最后一个是平均值
 int32_t  BMP085_FIFOH[21];	 //先进先出过滤器数组
 
 unsigned char BMP085_IS_Finish(void);
@@ -46,14 +46,14 @@ void BMP085_newTemperature(int32_t T)
 unsigned char i ;
 int32_t sum=0;
 for(i=1;i<10;i++){
-	BMP085_FIFO[0][i-1]=BMP085_FIFO[0][i];
+	BMP085_FIFO[0][i-1]=BMP085_FIFO[0][i];   //数据左移
 }
 BMP085_FIFO[0][9]=T; //将新值放置到数组的末尾
 sum=0;
 for(i=0;i<10;i++){
    sum+=BMP085_FIFO[0][i]; //累加
 }
-last_Temperature=BMP085_FIFO[0][10]=sum/10;	//取平均值
+last_Temperature=BMP085_FIFO[0][10]=sum/10;	//取平均值 //妈蛋的直接平均滤波是不是有点太easy了
 }
 
 /**************************实现函数********************************************
@@ -165,7 +165,7 @@ void BMP085_Routing(void)
 
 /**************************实现函数********************************************
 *函数原型:		unsigned char BMP085_IS_Finish(void)
-*功　　能:		检查 BMP085  是否完成了转换
+*功　　能:		检查 BMP085  是否完成了转换     这个地方需要确认下
 *******************************************************************************/
 unsigned char BMP085_IS_Finish(void)
 {

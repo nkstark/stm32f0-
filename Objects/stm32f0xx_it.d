@@ -32,3 +32,5 @@
 .\objects\stm32f0xx_it.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h
 .\objects\stm32f0xx_it.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_wwdg.h
 .\objects\stm32f0xx_it.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
+.\objects\stm32f0xx_it.o: .\HW_DRIVER\msb.h
+.\objects\stm32f0xx_it.o: .\HW_DRIVER\delay.h

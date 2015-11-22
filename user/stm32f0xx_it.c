@@ -29,6 +29,19 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_it.h"
+#include "msb.h"
+#include "delay.h"
+#define u8 uint8_t
+
+volatile unsigned char  MSB_DATA=0;
+volatile u8 HW_MSB_STAT=0;
+volatile u8 HW_MSB_DATA=0;
+volatile u8 HW_MSB_ERROR=0;
+//volatile unsigned char MSB_Sta;
+//volatile u8 msb_i=0;
+//volatile	u8 startflag=0;
+//volatile 	u8 endflag=0;
+
 
 /** @addtogroup Template_Project
   * @{
@@ -50,6 +63,39 @@
   * @param  None
   * @retval None
   */
+	
+	void USART1_IRQHandler(void)
+{
+  if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //判断是否为接受中断
+  {
+    /* Read one byte from the receive data register */
+		    HW_MSB_DATA = USART_ReceiveData(USART1);        //接收总线地址
+		
+		if((HW_MSB_DATA<=0x0f)&&(  MB_DATA_Update_Status==1)&&HW_MSB_DATA==mb_data[HW_MSB_DATA].address)		 //msb的地址是否在范围之内？  MB的data 更新过了吗 总线地址是否匹配
+		{
+//			if(HW_MSB_DATA==mb_data[HW_MSB_DATA].address)
+			{
+					USART_ITConfig(USART1, USART_IT_RXNE, DISABLE );
+					delay_us(1000);
+		 //   HW_MSB_DATA = USART_ReceiveData(USART1);
+//					HW_MSB_STAT=1;
+					HW_msb_send_IT(HW_MSB_DATA);                  //回应
+					MB_DATA_Update_Status=0;                      //清除数据更新标志
+					USART_ITConfig(USART1, USART_IT_RXNE, ENABLE );
+			}
+		}
+		else 
+		{
+			HW_MSB_ERROR=HW_MSB_DATA;
+//			HW_MSB_STAT=0;
+		}
+//    if(RxCounter1 == NbrOfDataToRead1)
+    {
+      /* Disable the USARTy Receive interrupt */
+    }
+  }
+}
+
 void NMI_Handler(void)
 {
 }
