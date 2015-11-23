@@ -109,6 +109,7 @@ void HW_msb_init_Sensor(void);
 void HW_msb_send(uint8_t data);
 void HW_msb_init_eScreen(void);
 void HW_msb_send_IT(uint8_t ADDR);
+	void mb_update(uint8_t adr,uint8_t unit,int16_t value,uint8_t alert) ;
 //u8 HW_msb_crc(void);
 //u8 HW_msb_data_cal(void);
 //void msb_data_decoder(void);

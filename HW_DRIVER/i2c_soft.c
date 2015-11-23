@@ -14,27 +14,27 @@
 #define i2c_sda GPIO_Pin_4
 #define i2c_scl GPIO_Pin_3
 
-#define bmp180_vcc GPIO_Pin_1
-#define bmp180_gnd GPIO_Pin_2
+//#define bmp180_vcc GPIO_Pin_
+//#define bmp180_gnd GPIO_Pin_2
 
 
- void bmp180_power(void)
- {
-		
-	  GPIO_InitTypeDef GPIO_InitStructure;
-				RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
-	
-	GPIO_InitStructure.GPIO_Pin=bmp180_vcc|bmp180_gnd;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;  
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;	
-	GPIO_Init(GPIOA,&GPIO_InitStructure);
-	 
-	 GPIO_SetBits(GPIOA,bmp180_vcc);
-	 GPIO_ResetBits(GPIOA,bmp180_gnd);
- }	 
-	
+// void bmp180_power(void)
+// {
+//		
+//	  GPIO_InitTypeDef GPIO_InitStructure;
+//				RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
+//	
+//	GPIO_InitStructure.GPIO_Pin=bmp180_vcc|bmp180_gnd;
+//	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+//	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
+//	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;  
+//	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;	
+//	GPIO_Init(GPIOA,&GPIO_InitStructure);
+//	 
+//	 GPIO_SetBits(GPIOA,bmp180_vcc);
+//	 GPIO_ResetBits(GPIOA,bmp180_gnd);
+// }	 
+//	
 	
 	
 /**************************ÊµÏÖº¯Êý********************************************

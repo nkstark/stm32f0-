@@ -8,8 +8,8 @@
 #include "msb.h"
 #define USART_msb USART1
 #define USART_msb_GPIOX GPIOA
-#define USART_msb_PinSource GPIO_PinSource2
-#define USART_msb_Pin GPIO_Pin_2
+#define USART_msb_PinSource GPIO_PinSource9
+#define USART_msb_Pin GPIO_Pin_9
 #define MSB_ADDR 0x03
 
 
@@ -42,23 +42,25 @@ void HW_msb_init_Sensor(void)
 	
 	//msb 传感器初始化部分
 	//接口：38400，8，1，0，0 单线串口模式
-	//物理接口：PA2
+	//物理接口：PA9
 	USART_InitTypeDef USART_InitStructure;
 	GPIO_InitTypeDef	GPIO_InitStructure;
 	  NVIC_InitTypeDef NVIC_InitStructure;
 	
-  RCC_AHBPeriphClockCmd(RCC_APB2Periph_USART1|RCC_AHBPeriph_GPIOA, ENABLE);
-	
-	
-	GPIO_PinAFConfig(GPIOA,USART_msb_PinSource,GPIO_AF_1);  
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
+
 	
 	
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_Level_3;
-		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+		GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
 		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-		GPIO_InitStructure.GPIO_Pin = USART_msb_Pin;
-		GPIO_Init(USART_msb_GPIOX, &GPIO_InitStructure);
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+	
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+		GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_1);  
  
 
   
@@ -68,6 +70,8 @@ void HW_msb_init_Sensor(void)
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
 
+   //   RCC_USARTCLKConfig( RCC_USART1CLK_PCLK );
+        USART_DeInit( USART1 );
 
   USART_InitStructure.USART_BaudRate = 38400;
   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -76,12 +80,13 @@ void HW_msb_init_Sensor(void)
   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
-  USART_Init(USART_msb, &USART_InitStructure);
+  USART_Init(USART1, &USART_InitStructure);
 
-  USART_Cmd(USART_msb, ENABLE);
-	  USART_ITConfig(USART_msb, USART_IT_RXNE, ENABLE);  
 
-  USART_HalfDuplexCmd(USART_msb, ENABLE);
+  USART_HalfDuplexCmd(USART1, ENABLE);
+  USART_Cmd(USART1, ENABLE);
+	  USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);  
+
 
 }
 
@@ -97,7 +102,7 @@ void HW_msb_send(uint8_t data)
     while(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);       
 }	
 	
-	void mb_update(uint8_t adr,uint8_t unit,int16_t value,uint8_t alert) 
+	void mb_update(uint8_t adr,uint8_t unit,int16_t value,uint8_t alert)  //注意这里的value最多只能是15bit
 		{
   uint8_t b1,b2,b3;
   b1=adr;
@@ -105,7 +110,7 @@ void HW_msb_send(uint8_t data)
   b1+=unit;
  // if (value!=MB_NOVALUE) //???
 		{
-//    value<<=1;
+    value<<=1;
     if (alert==MB_ALERT) value++;
   }
   b2=value;

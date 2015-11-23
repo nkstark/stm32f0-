@@ -25,7 +25,7 @@ int16_t _oss;                 // 过采样设置
   
 int32_t _cm_Offset, _Pa_Offset;
 int32_t _param_datum, _param_centimeters;
-volatile unsigned char BPM085_ST;
+volatile unsigned char BPM180_ST;
 int32_t last_Temperature,last_Pressure,last_Alt;
 int32_t  BMP180_FIFO[2][11]; //先进先出过滤器数组 //最后一个是平均值
 int32_t  BMP180_FIFOH[21];	 //先进先出过滤器数组
@@ -105,13 +105,7 @@ void BMP180_getAlt(int32_t *_centimeters)
 	*_centimeters = last_Alt;	
 }
 
-int32_t BMP180_test(void)
-{
-	if(last_Alt > BMP180_DATA[0])  BMP180_DATA[0]=last_Alt;
-	BMP180_DATA[1]=last_Alt;
-	BMP180_DATA[2]=last_Temperature;
-	BMP180_DATA[3]=last_Pressure;
-}
+
 
 /**************************实现函数********************************************
 *函数原型:		void BMP180_getPress(int32_t *_TruePressure)
@@ -139,31 +133,31 @@ void BMP180_getTemperat(int32_t *_Temperature)
 *******************************************************************************/
 void BMP180_Routing(void)
 {
-  switch(BPM085_ST){
+  switch(BPM180_ST){
   case SCTemperature: 
   				BMP180_writemem(CONTROL, READ_TEMPERATURE); 
-				BPM085_ST=CTemperatureing;
+				BPM180_ST=CTemperatureing;
 				break;
   case CTemperatureing: 
   			 	if(BMP180_IS_Finish()){
 				BMP180_calcTrueTemperature(0);
 				BMP180_getTemperature(&last_Temperature,0);
 				BMP180_newTemperature(last_Temperature);
-				BPM085_ST=SCPressure;
+				BPM180_ST=SCPressure;
 				}
   				break;
   case SCPressure:  
   				BMP180_writemem(CONTROL, READ_PRESSURE+(_oss << 6));
-				BPM085_ST=SCPressureing;
+				BPM180_ST=SCPressureing;
   				break;
   case SCPressureing:  
   				if(BMP180_IS_Finish()){
 				BMP180_getAltitude(&last_Alt,0);
 				BMP180_newALT(last_Alt);
-				BPM085_ST=SCTemperature;
+				BPM180_ST=SCTemperature;
 				}
   				break;
-  default :BPM085_ST=SCTemperature; break;
+  default :BPM180_ST=SCTemperature; break;
   }
 
 }
@@ -344,6 +338,20 @@ void BMP180_getTemperature(int32_t *_Temperature,u8 rw) {
   BMP180_calcTrueTemperature(rw);                            // force b5 update
   *_Temperature = ((b5 + (int32_t)8) >> 4);
 }
+
+/**************************实现函数********************************************
+*函数原型:		void BMP180_read(void)
+*功　　能:		将bmp
+*******************************************************************************/
+
+void BMP180_read(void)
+{
+	if(last_Alt > BMP180_DATA[0])  BMP180_DATA[0]=last_Alt;
+	BMP180_DATA[1]=last_Alt;
+	BMP180_DATA[2]=last_Temperature;
+	BMP180_DATA[3]=last_Pressure;
+}
+
 
 //------------------End of File----------------------------
 

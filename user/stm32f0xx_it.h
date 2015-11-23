@@ -40,12 +40,20 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-
+#define u8 uint8_t
 void NMI_Handler(void);
 void HardFault_Handler(void);
 void SVC_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+	 
+	extern volatile unsigned char  MSB_DATA;
+extern volatile u8 HW_MSB_STAT;
+extern volatile u8 HW_MSB_DATA;
+extern volatile u8 HW_MSB_ERROR;
+	 
+	 
+	 
 
 /*void PPP_IRQHandler(void);*/
 

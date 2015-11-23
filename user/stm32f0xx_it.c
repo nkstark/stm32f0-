@@ -65,36 +65,79 @@ volatile u8 HW_MSB_ERROR=0;
   */
 	
 	void USART1_IRQHandler(void)
-{
-  if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //判断是否为接受中断
-  {
-    /* Read one byte from the receive data register */
-		    HW_MSB_DATA = USART_ReceiveData(USART1);        //接收总线地址
-		
-		if((HW_MSB_DATA<=0x0f)&&(  MB_DATA_Update_Status==1)&&HW_MSB_DATA==mb_data[HW_MSB_DATA].address)		 //msb的地址是否在范围之内？  MB的data 更新过了吗 总线地址是否匹配
+	{
+		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 		{
+			  HW_MSB_DATA = USART_ReceiveData(USART1);  
+			HW_MSB_STAT=1;
+		}
+	}
+	
+	
+//	void USART1_IRQHandler(void)
+//{
+//	// HW_MSB_DATA = USART_ReceiveData(USART1);  
+//  if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //判断是否为接受中断
+//  {
+//    /* Read one byte from the receive data register */
+//		    HW_MSB_DATA = USART_ReceiveData(USART1);        //接收总线地址
+//		
+//	//	if((HW_MSB_DATA<=0x0f)&&(  MB_DATA_Update_Status==1)&&(HW_MSB_DATA==mb_data[HW_MSB_DATA].address)		) //msb的地址是否在范围之内？  MB的data 更新过了吗 总线地址是否匹配
+//		{
 //			if(HW_MSB_DATA==mb_data[HW_MSB_DATA].address)
-			{
-					USART_ITConfig(USART1, USART_IT_RXNE, DISABLE );
-					delay_us(1000);
-		 //   HW_MSB_DATA = USART_ReceiveData(USART1);
-//					HW_MSB_STAT=1;
-					HW_msb_send_IT(HW_MSB_DATA);                  //回应
-					MB_DATA_Update_Status=0;                      //清除数据更新标志
-					USART_ITConfig(USART1, USART_IT_RXNE, ENABLE );
-			}
-		}
-		else 
-		{
-			HW_MSB_ERROR=HW_MSB_DATA;
-//			HW_MSB_STAT=0;
-		}
-//    if(RxCounter1 == NbrOfDataToRead1)
-    {
-      /* Disable the USARTy Receive interrupt */
-    }
-  }
-}
+//			{
+//					USART_ITConfig(USART1, USART_IT_RXNE, DISABLE );
+//	//				delay_us(1000);
+//		 //   HW_MSB_DATA = USART_ReceiveData(USART1);
+////					HW_MSB_STAT=1;
+//					HW_msb_send_IT(HW_MSB_DATA);                  //回应
+//					MB_DATA_Update_Status=0;                      //清除数据更新标志
+//					USART_ITConfig(USART1, USART_IT_RXNE, ENABLE );
+//			}
+//		}
+////		else 
+//		{
+//			HW_MSB_ERROR=HW_MSB_DATA;
+////			HW_MSB_STAT=0;
+//		}
+////    if(RxCounter1 == NbrOfDataToRead1)
+//    {
+//      /* Disable the USARTy Receive interrupt */
+//    }
+//  }
+//}
+
+//	void USART2_IRQHandler(void)
+//{
+//  if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)  //判断是否为接受中断
+//  {
+//    /* Read one byte from the receive data register */
+//		    HW_MSB_DATA = USART_ReceiveData(USART2);        //接收总线地址
+//		
+//		if((HW_MSB_DATA<=0x0f)	) //msb的地址是否在范围之内？  MB的data 更新过了吗 总线地址是否匹配
+//		{
+////			if(HW_MSB_DATA==mb_data[HW_MSB_DATA].address)
+//			{
+//					USART_ITConfig(USART2, USART_IT_RXNE, DISABLE );
+//					delay_us(1000);
+//		 //   HW_MSB_DATA = USART_ReceiveData(USART1);
+////					HW_MSB_STAT=1;
+//					HW_msb_send_IT(HW_MSB_DATA);                  //回应
+//					MB_DATA_Update_Status=0;                      //清除数据更新标志
+//					USART_ITConfig(USART2, USART_IT_RXNE, ENABLE );
+//			}
+//		}
+//		else 
+//		{
+//			HW_MSB_ERROR=HW_MSB_DATA;
+////			HW_MSB_STAT=0;
+//		}
+////    if(RxCounter1 == NbrOfDataToRead1)
+//    {
+//      /* Disable the USARTy Receive interrupt */
+//    }
+//  }
+//}
 
 void NMI_Handler(void)
 {
