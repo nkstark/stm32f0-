@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\m0.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\m0.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Mon Nov 23 21:32:21 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060020: Last Updated: Mon Nov 23 23:34:42 2015
 <BR><P>
 <H3>Maximum Stack Usage =        340 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -287,7 +287,8 @@ Global Symbols
 <P><STRONG><a name="[5f]"></a>__aeabi_idivmod</STRONG> (Thumb, 326 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_idivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_newTemperature
+<BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_newTemperature
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_newPressure
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_newALT
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_calcTrueTemperature
@@ -681,6 +682,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_Routing
 </UL>
 
+<P><STRONG><a name="[9e]"></a>BMP180_read</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, my_bmp180.o(i.BMP180_read))
+<BR><BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[5d]"></a>BMP180_readmem</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, my_bmp180.o(i.BMP180_readmem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = BMP180_readmem &rArr; IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; SDA_OUT &rArr; GPIO_Init
 </UL>
@@ -709,10 +714,6 @@ Global Symbols
 
 <P><STRONG><a name="[72]"></a>BMP180_setMode</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, my_bmp180.o(i.BMP180_setMode))
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP_init
-</UL>
-
-<P><STRONG><a name="[9e]"></a>BMP180_test</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, my_bmp180.o(i.BMP180_test))
-<BR><BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[55]"></a>BMP180_writemem</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, my_bmp180.o(i.BMP180_writemem))
@@ -1143,7 +1144,7 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
 </UL>
 
-<P><STRONG><a name="[30]"></a>main</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[30]"></a>main</STRONG> (Thumb, 152 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 340<LI>Call Chain = main &rArr; BMP180_init &rArr; BMP_init &rArr; BMP180_setLocalPressure &rArr; BMP180_getAltitude &rArr; BMP180_calcTruePressure &rArr; BMP180_calcTrueTemperature &rArr; BMP180_writemem &rArr; IICwriteByte &rArr; IICwriteBytes &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; SDA_OUT &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mb_update
@@ -1153,10 +1154,11 @@ Global Symbols
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_msb_send_IT
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_msb_init_Sensor
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_test
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_read
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_init
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_Routing
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP180_ResetAlt
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>

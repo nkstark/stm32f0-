@@ -57,9 +57,10 @@ void BMP180_getPress(int32_t *_TruePressure);  //Pressure(Pa) 读取气压值
 void BMP180_getAlt(int32_t *_centimeters); //Alt(cm) 读取高度
 void BMP180_Routing(void);	  //这个程序需要用户定时调用，以更新当前温度和气压值 
 void BMP180_ResetAlt(int32_t _centimeters);	//复位气压高度。把当前的高度设置成 0米
-
+extern volatile int32_t err;
 void BMP180_read(void);
-
+void MY_BMP180_init(void);
+void MY_BMP180_Routing(void);
 #endif
 
 //------------------End of File----------------------------

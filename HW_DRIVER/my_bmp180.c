@@ -10,6 +10,8 @@
 #include <math.h>
 //#include "UARTs.h"
 
+		volatile int32_t err=10000;
+
 // 气压计状态机
 #define SCTemperature  0x01
 #define CTemperatureing  0x02
@@ -133,13 +135,13 @@ void BMP180_getTemperat(int32_t *_Temperature)
 *******************************************************************************/
 void BMP180_Routing(void)
 {
-  switch(BPM180_ST){
+  switch(BPM180_ST){                                                    //根据BMP180 这个值得状态来决定工作模式
   case SCTemperature: 
   				BMP180_writemem(CONTROL, READ_TEMPERATURE); 
 				BPM180_ST=CTemperatureing;
 				break;
   case CTemperatureing: 
-  			 	if(BMP180_IS_Finish()){
+  			 	if(BMP180_IS_Finish()){                                           //这个判断完成的好像有点问题
 				BMP180_calcTrueTemperature(0);
 				BMP180_getTemperature(&last_Temperature,0);
 				BMP180_newTemperature(last_Temperature);
@@ -350,6 +352,88 @@ void BMP180_read(void)
 	BMP180_DATA[1]=last_Alt;
 	BMP180_DATA[2]=last_Temperature;
 	BMP180_DATA[3]=last_Pressure;
+}
+
+/**************************实现函数********************************************
+*函数原型:		void BMP180_read(void)
+*功　　能:		将bmp
+*******************************************************************************/
+
+void MY_BMP180_Routing(void)
+{
+ // switch(BPM180_ST){                                                    //根据BMP180 这个值得状态来决定工作模式
+ // case SCTemperature: 
+  				BMP180_writemem(CONTROL, READ_TEMPERATURE); 
+	//			BPM180_ST=CTemperatureing;
+	//			break;
+ // case CTemperatureing: 
+ // 			 	if(BMP180_IS_Finish())
+	{                                           //这个判断完成的好像有点问题
+				BMP180_calcTrueTemperature(0);
+				BMP180_getTemperature(&last_Temperature,0);
+				BMP180_newTemperature(last_Temperature);
+	//			BPM180_ST=SCPressure;
+				}
+  //				break;
+ // case SCPressure:  
+  	//			BMP180_writemem(CONTROL, READ_PRESSURE+(_oss << 6));
+	//			BPM180_ST=SCPressureing;
+  //				break;
+ // case SCPressureing:  
+ // 				if(BMP180_IS_Finish())
+				{
+		//		BMP180_getAltitude(&last_Alt,0);
+		//		BMP180_newALT(last_Alt);
+		//		BPM180_ST=SCTemperature;
+				}
+  //				break;
+  //default :BPM180_ST=SCTemperature; break;
+  }
+
+
+
+
+
+
+
+
+
+/**************************实现函数********************************************
+*函数原型:		void BMP180_init(void)
+*功　　能:		供外部调用的初始化程序
+*******************************************************************************/
+void MY_BMP180_init(void) 
+	{  
+
+		int i=0;
+  _cm_Offset = 0;
+  _Pa_Offset = 0;               // 1hPa = 100Pa = 1mbar	
+  BMP_init(MODE_ULTRA_HIGHRES, 0, 1);
+	
+		
+	while(err>3)	
+	{		//等待温度稳定                  //十次连续测量的误差之和在10 之内
+		err=0;
+		for(i=0;i<=200;i++)
+		{
+		 MY_BMP180_Routing();
+			delay_ms(15);
+		}
+		for(i=0;i<10;i++)          
+		{
+		err=BMP180_FIFO[0][i]+err;
+		}
+		err=err-(10*BMP180_FIFO[0][10]);	
+	}
+			for(i=0;i<=200;i++)
+		{
+		 BMP180_Routing();
+			delay_ms(50);
+		}
+	
+			delay_ms(500);
+			BMP180_ResetAlt(0);
+	
 }
 
 
