@@ -1,9 +1,9 @@
-#ifndef __MY_BMP180_H
-#define __MY_BMP180_H
-
+#ifndef _MY_BMP180_V2
+#define _MY_BMP180_V2
+#include "stm32f0xx.h"
 #include "i2c_soft.h"
 #include "delay.h"
-
+#include <math.h>
 
 #define BMP180_ADDR                 0xEE     // default I2C address
 #define BUFFER_SIZE                 3
@@ -32,7 +32,7 @@
 #define SOFTRESET         0xE0
 #define VERSION           0xD1  // ML_VERSION  pos=0 len=4 msk=0F  AL_VERSION pos=4 len=4 msk=f0
 #define CHIPID            0xD0  // pos=0 mask=FF len=8
-                                // BMP180_CHIP_ID=0x55
+#define  BMP180_CHIP_ID		0x55
 
 /************************************/
 /*    REGISTERS PARAMETERS          */
@@ -46,24 +46,29 @@
 // Control register
 #define READ_TEMPERATURE        0x2E 
 #define READ_PRESSURE           0x34 
-//Other
-#define MSLP                    101325          // Mean Sea Level Pressure = 1013.25 hPA (1hPa = 100Pa = 1mbar)
-extern volatile int32_t BMP180_DATA[4];
 
-//以下程序为BMP180驱动供外部调用的API
-void BMP180_init(void);	//初始化BMP180
-void BMP180_getTemperat(int32_t *_Temperature);	//Temp(0.1C):  读取温度
-void BMP180_getPress(int32_t *_TruePressure);  //Pressure(Pa) 读取气压值
-void BMP180_getAlt(int32_t *_centimeters); //Alt(cm) 读取高度
-void BMP180_Routing(void);	  //这个程序需要用户定时调用，以更新当前温度和气压值 
-void BMP180_ResetAlt(int32_t _centimeters);	//复位气压高度。把当前的高度设置成 0米
-extern volatile int32_t err;
-void BMP180_read(void);
-void MY_BMP180_init(void);
-//void MY_BMP180_Routing(void);
-void MY_BMP180_Routing_V2(int rw);
-void BMP180_readmem(uint8_t _addr, uint8_t _nbytes, uint8_t __buff[]);
-void BMP180_writemem(uint8_t _addr, uint8_t _val);
+extern volatile int32_t my_T;
+extern volatile int32_t my_P;
+extern volatile  float my_A;
+extern 	volatile float  K;
+
+extern volatile int32_t Pa[5];
+extern volatile int32_t E;
+extern volatile int32_t Var;
+extern volatile int32_t Pa_quad[5];
+extern volatile int32_t E_quad;
+
+#define calculate_Methode_0 0x00
+#define calculate_Methode_1	0x01
+
+extern volatile float K0;
+extern volatile int32_t b5;
+
+extern float _cm_Offset;  //存入目前的绝对海平面高度
+extern float _Pa_Offset;	//海平面气压
+
+void BMP180_init(void) ;
+void MY_BMP180_Routing(int rw);
+void MY_ALT_CAL(u8 calculate_Methode,float data);
+float filter(void);
 #endif
-
-//------------------End of File----------------------------

@@ -32,7 +32,8 @@
 .\objects\main.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_wwdg.h
 .\objects\main.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\objects\main.o: .\HW_DRIVER\i2c_soft.h
-.\objects\main.o: .\HW_DRIVER\my_bmp180.h
+.\objects\main.o: .\HW_DRIVER\my_bmp180_v2.h
+.\objects\main.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: .\HW_DRIVER\msb.h
 .\objects\main.o: .\user\stm32f0xx_it.h
 .\objects\main.o: .\user\main.h

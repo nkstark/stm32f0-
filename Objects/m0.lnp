@@ -31,10 +31,9 @@
 ".\objects\delay.o"
 ".\objects\i2c_soft.o"
 ".\objects\led.o"
-".\objects\my_bmp180.o"
 ".\objects\msb.o"
+".\objects\my_bmp180_v2.o"
 ".\objects\tinyekf.o"
-".\objects\my_kf.o"
 --strict --scatter ".\Objects\m0.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

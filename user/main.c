@@ -10,11 +10,13 @@
 
 #include "delay.h"
 #include "i2c_soft.h"
-#include "my_bmp180.h"
+#include "my_bmp180_v2.h"
 #include "msb.h"
 
 int a,b,c;
-
+u8 test[1];
+float EE=0.0f;
+float hhhh=0;
 int main(void)
 {
 	int n=0;
@@ -25,45 +27,29 @@ int main(void)
 	HW_msb_init_Sensor();
 //	MY_BMP180_init() ;
   while (1)
-  {
-		n=200;
-		while(n)
+	{
+	//	BMP180_readmem(CHIPID,1,test);
+	//	MY_BMP180_Routing(1);
+//		delay_ms(100);
+//		MY_ALT_CAL(1);
+//		EE=filter();
+//	MY_ALT_CAL(1,EE);
+		if(HW_MSB_DATA==0x04)
 		{
-				BMP180_Routing();
-				delay_ms(50);
-			n--;
+		
+		EE=filter();
+	MY_ALT_CAL(1,EE);
+		
 		}
-////		HW_msb_send
-		BMP180_ResetAlt(0);
-		while(1)
+		if(HW_MSB_DATA==0x03)
 		{
-	//		HW_msb_send(0x11);
-		//	mb_update(0x03,MB_TEMP,BMP180_DATA[2],0x00);
-	//		LED_ON;
-		delay_ms(5);
-	//	LED_OFF;
-	
-	//delay_ms(100);
-				BMP180_read();
-				mb_update(0x03,MB_TEMP,BMP180_DATA[2],0x00);
-			mb_update(0x04,MB_ALT,BMP180_DATA[1]/100,0x00);
-			//		if(HW_MSB_STAT==1)
-		{
-			if(HW_MSB_DATA==0x03)
-			{
-	//				BMP180_Routing();
-				delay_us(1000);
-				HW_msb_send_IT(0x03);
-			}
-					if(HW_MSB_DATA==0x04)
-			{
-					BMP180_Routing();
-	//			delay_us(299);
-				HW_msb_send_IT(0x04);
-			}
+			delay_us(500);
+			mb_update(0x03,MB_ALT,my_A/100,0x00);
+			HW_msb_send_IT(0x03);
+			HW_MSB_STAT=0;
 		}
-		}
-  }
+	}
+
+
+
 }
-
-

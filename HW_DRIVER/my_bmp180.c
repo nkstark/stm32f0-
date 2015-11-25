@@ -21,6 +21,9 @@
 volatile int16_t ac1,ac2,ac3,b1,b2,mb,mc,md;     // 标定的数据  
 volatile uint16_t ac4,ac5,ac6;                   // 标定的数据
 volatile int32_t b5;                    //温度
+
+	  volatile int32_t up,x3,b3,b6,p; //XINJIADE
+  volatile int32_t b4,b7;
   
 uint8_t _buff[BUFFER_SIZE];    // 数据缓冲区
 int16_t _oss;                 // 过采样设置
@@ -31,7 +34,7 @@ volatile unsigned char BPM180_ST;
 int32_t last_Temperature,last_Pressure,last_Alt;
 int32_t  BMP180_FIFO[2][11]; //先进先出过滤器数组 //最后一个是平均值
 int32_t  BMP180_FIFOH[21];	 //先进先出过滤器数组
-
+volatile int32_t my_P;
 volatile int32_t BMP180_DATA[4];
 
 unsigned char BMP180_IS_Finish(void);
@@ -40,6 +43,10 @@ void BMP180_calcTrueTemperature(u8 rw);
 void BMP180_getTemperature(int32_t *_Temperature,u8 rw);
 void BMP180_calcTruePressure(int32_t *_TruePressure,u8 writeread);
 void BMP180_getAltitude(int32_t *_centimeters,u8 rw);
+
+int32_t my_T;
+
+
 
 /**************************实现函数********************************************
 *函数原型:		void BMP180_newTemperature(int32_t T)
@@ -135,7 +142,8 @@ void BMP180_getTemperat(int32_t *_Temperature)
 *******************************************************************************/
 void BMP180_Routing(void)
 {
-  switch(BPM180_ST){                                                    //根据BMP180 这个值得状态来决定工作模式
+  switch(BPM180_ST)
+		{                                                    //根据BMP180 这个值得状态来决定工作模式
   case SCTemperature: 
   				BMP180_writemem(CONTROL, READ_TEMPERATURE); 
 				BPM180_ST=CTemperatureing;
@@ -359,39 +367,99 @@ void BMP180_read(void)
 *功　　能:		将bmp
 *******************************************************************************/
 
-void MY_BMP180_Routing(void)
+void MY_BMP180_T_Routing(int rw)
 {
- // switch(BPM180_ST){                                                    //根据BMP180 这个值得状态来决定工作模式
- // case SCTemperature: 
-  				BMP180_writemem(CONTROL, READ_TEMPERATURE); 
-	//			BPM180_ST=CTemperatureing;
-	//			break;
- // case CTemperatureing: 
- // 			 	if(BMP180_IS_Finish())
-	{                                           //这个判断完成的好像有点问题
-				BMP180_calcTrueTemperature(0);
-				BMP180_getTemperature(&last_Temperature,0);
-				BMP180_newTemperature(last_Temperature);
-	//			BPM180_ST=SCPressure;
-				}
-  //				break;
- // case SCPressure:  
-  	//			BMP180_writemem(CONTROL, READ_PRESSURE+(_oss << 6));
-	//			BPM180_ST=SCPressureing;
-  //				break;
- // case SCPressureing:  
- // 				if(BMP180_IS_Finish())
-				{
-		//		BMP180_getAltitude(&last_Alt,0);
-		//		BMP180_newALT(last_Alt);
-		//		BPM180_ST=SCTemperature;
-				}
-  //				break;
-  //default :BPM180_ST=SCTemperature; break;
-  }
 
 
+	int32_t ut,x1,x2,mctemp,mdtemp;
+  if(rw)
+		{
+			BMP180_writemem(CONTROL, READ_TEMPERATURE);
+			delay_ms(10);                          // min. 4.5ms read Temp delay
+			}
+  BMP180_readmem(CONTROL_OUTPUT, 2, _buff); 
+  ut = ((int32_t)_buff[0] << 8 | ((int32_t)_buff[1]));    // uncompensated temperature value
+ 
+  // calculate temperature
+  x1 = (((int32_t)ut - (int32_t)ac6) * (int32_t)ac5) >> 15;
+  mctemp= mc;
+  mdtemp= md;
+  x2 = (mctemp <<11) / (x1 + mdtemp);
+  b5 = x1 + x2;
+	my_T=(b5+8)>>4;
+			
+		
+}
 
+void MY_BMP180_P_Routing(int rw)
+{
+	
+}
+
+void MY_BMP180_Routing_V2(int rw)
+{
+
+
+	int32_t ut,x1,x2,mctemp,mdtemp;
+	
+//	  volatile int32_t up,x3,b3,b6,p;
+//  volatile int32_t b4,b7;
+  volatile int32_t tmp; 
+	
+	
+  if(rw)                                           //这一段多余
+		{
+			BMP180_writemem(CONTROL, READ_TEMPERATURE);
+			delay_ms(10);                          // min. 4.5ms read Temp delay
+			}
+  BMP180_readmem(CONTROL_OUTPUT, 2, _buff); 
+  ut = ((int32_t)_buff[0] << 8 | ((int32_t)_buff[1]));    // uncompensated temperature value
+ 
+  // calculate temperature
+  x1 = (((int32_t)ut - (int32_t)ac6) * (int32_t)ac5) >> 15;
+  mctemp= mc;
+  mdtemp= md;
+  x2 = (mctemp <<11) / (x1 + mdtemp);
+  b5 = x1 + x2;
+	my_T=(b5+8)>>4;                                   //温度计算到此为止
+			
+			
+	
+  BMP180_writemem(CONTROL, READ_PRESSURE+(_oss << 6)); 
+  delay_ms(30); 
+  
+     
+  BMP180_readmem(CONTROL_OUTPUT, 3, _buff);  
+  up = ((((int32_t)_buff[0] <<16) | ((int32_t)_buff[1] <<8) | ((int32_t)_buff[2])) >> (8-_oss)); // uncompensated pressure value
+  
+  // calculate true pressure
+  b6 = b5 - 4000;             // b5 is updated by calcTrueTemperature().
+  x1 = (b2* ((b6 * b6) >> 12)) >> 11;
+  x2 = (ac2 * b6) >> 11;
+  x3 = x1 + x2;
+  tmp = ac1;
+  tmp = (tmp * 4 + x3) << _oss;
+  b3 = (tmp + 2) >> 2;
+  x1 = (ac3 * b6) >> 13;
+  x2 = (b1 * ((b6 * b6) >> 12)) >> 16;
+  x3 = ((x1 + x2) + 2) >> 2;
+  b4 = (ac4 * (uint32_t) (x3 + 32768)) >> 15;
+  b7 = ((uint32_t)up - b3) * (50000 >> _oss);
+  if(b7 < 0x80000000)
+		{
+   p = ((uint32_t)b7 << 1) / b4;
+		}
+		else
+		{
+  p = (b7 / b4) << 1;
+		}
+ // p = b7 < 0x80000000 ? (b7 << 1) / b4 : (b7 / b4) << 1;   //gaidong
+  x1 = (p >> 8) * (p >> 8);
+  x1 = (x1 * 3038) >> 16;
+  x2 = (-7357 * p) >> 16;
+  my_P = p + ((x1 + x2 + 3791) >> 4);	   //气压单位是pa   气压计算到此为止   这里计算的是绝对气压
+
+}
 
 
 
@@ -416,7 +484,7 @@ void MY_BMP180_init(void)
 		err=0;
 		for(i=0;i<=200;i++)
 		{
-		 MY_BMP180_Routing();
+		 BMP180_Routing();
 			delay_ms(15);
 		}
 		for(i=0;i<10;i++)          
