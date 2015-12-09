@@ -235,14 +235,19 @@ void BMP180_init(void)
   _Pa_Offset = 0;               // 1hPa = 100Pa = 1mbar	
   BMP_init(MODE_HIGHRES, 0, 1);
 //		b5=200;
-		for(i=0;i<50;i++)
+		for(i=0;i<10;i++)
+		{
+			filter();
+			delay_us(100);
+		}
+		for(i=0;i<25;i++)						//这个循环太久了，原因在于50次的测量
 		{
 			tempp=tempp+filter();
 		}
-		tempp=tempp /50.0f;
+		tempp=tempp /25.0f;
 		_Pa_Offset=my_P0 ;
 		my_P0 =tempp;
-		for(i=0;i<10;i++)
+		for(i=0;i<5;i++)
 		{
 		_cm_Offset=4433000 * (1 - pow((tempp / _Pa_Offset), 0.1903)) ; //计算绝对高度
 			_Pa_Offset = tempp / pow((1 - _cm_Offset / 4433000), 5.255) ; //用绝对高度算海平面气压
@@ -262,25 +267,25 @@ volatile float K0=100.0f; //这个值的设定值得探讨
 #define system_err 119.0f
 
 volatile float Ergibnis[3];
-//收到数据类型的限制，计算Var的时候发生了溢出，因此计算气压/10的Var
+//收到数据类型的限制，计算Var的时候发生了溢出，因此计算气压-10000的Var
 float filter(void)
 {
 	u8 i=0;
 	E=0;
 	E_quad =0;
-	Ergibnis[0]=Ergibnis[1];
+	Ergibnis[0]=Ergibnis[1];    //上次测量值赋值
 	for(i=0;i<5;i++)
 	{
-				MY_BMP180_Routing(1);
+				MY_BMP180_Routing(1); //测量
 	//	delay_ms(5);
-		Pa[i]=my_P-100000;
-			E=E+Pa[i];
-		E_quad=Pa[i]*Pa[i]+E_quad;
+		Pa[i]=my_P-100000;      	//五次测量值放入数组
+			E=E+Pa[i];							//五次求和
+		E_quad=Pa[i]*Pa[i]+E_quad;//五次平方和
 	
 	}
-	E=E/(5.0f);
-	Ergibnis[1]=E;
-	Var=(E_quad/5.0f)-(E)*(E);
+	E=E/(5.0f);									//计算期望值
+	Ergibnis[1]=E;							//期望值物质
+	Var=(E_quad/5.0f)-(E)*(E);	//计算方差
 	K_filter = (K0+system_err)/(K0+(float)Var+system_err);
 	K0=(1-K_filter)*(K0+system_err);
 	

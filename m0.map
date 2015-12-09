@@ -9,15 +9,16 @@ Section Cross References
     main.o(i.main) refers to my_bmp180_v2.o(i.BMP180_init) for BMP180_init
     main.o(i.main) refers to delay.o(i.delay_ms) for delay_ms
     main.o(i.main) refers to msb.o(i.HW_msb_init_Sensor) for HW_msb_init_Sensor
-    main.o(i.main) refers to my_bmp180_v2.o(i.filter) for filter
-    main.o(i.main) refers to my_bmp180_v2.o(i.MY_ALT_CAL) for MY_ALT_CAL
     main.o(i.main) refers to delay.o(i.delay_us) for delay_us
-    main.o(i.main) refers to fdiv.o(.text) for __aeabi_fdiv
-    main.o(i.main) refers to ffixi.o(.text) for __aeabi_f2iz
     main.o(i.main) refers to msb.o(i.mb_update) for mb_update
     main.o(i.main) refers to msb.o(i.HW_msb_send_IT) for HW_msb_send_IT
+    main.o(i.main) refers to stm32f0xx_usart.o(i.USART_Cmd) for USART_Cmd
+    main.o(i.main) refers to my_bmp180_v2.o(i.filter) for filter
+    main.o(i.main) refers to my_bmp180_v2.o(i.MY_ALT_CAL) for MY_ALT_CAL
+    main.o(i.main) refers to fdiv.o(.text) for __aeabi_fdiv
+    main.o(i.main) refers to ffixi.o(.text) for __aeabi_f2iz
     main.o(i.main) refers to stm32f0xx_it.o(.data) for HW_MSB_DATA
-    main.o(i.main) refers to main.o(.data) for EE
+    main.o(i.main) refers to main.o(.data) for MAX_ALT
     main.o(i.main) refers to my_bmp180_v2.o(.data) for my_A
     stm32f0xx_it.o(i.USART1_IRQHandler) refers to stm32f0xx_usart.o(i.USART_GetITStatus) for USART_GetITStatus
     stm32f0xx_it.o(i.USART1_IRQHandler) refers to stm32f0xx_usart.o(i.USART_ReceiveData) for USART_ReceiveData
@@ -271,6 +272,7 @@ Section Cross References
     my_bmp180_v2.o(i.BMP180_getCalData) refers to my_bmp180_v2.o(.data) for _buff
     my_bmp180_v2.o(i.BMP180_init) refers to my_bmp180_v2.o(i.BMP_init) for BMP_init
     my_bmp180_v2.o(i.BMP180_init) refers to my_bmp180_v2.o(i.filter) for filter
+    my_bmp180_v2.o(i.BMP180_init) refers to delay.o(i.delay_us) for delay_us
     my_bmp180_v2.o(i.BMP180_init) refers to faddsub.o(x$fpl$fadd) for __aeabi_fadd
     my_bmp180_v2.o(i.BMP180_init) refers to fdiv.o(.text) for __aeabi_fdiv
     my_bmp180_v2.o(i.BMP180_init) refers to f2d.o(.text) for __aeabi_f2d
@@ -1500,115 +1502,115 @@ Image Symbol Table
     i.BMP180_calcTrueTemperature             0x080013d0   Section        0  my_bmp180_v2.o(i.BMP180_calcTrueTemperature)
     i.BMP180_getCalData                      0x08001440   Section        0  my_bmp180_v2.o(i.BMP180_getCalData)
     i.BMP180_init                            0x080015a4   Section        0  my_bmp180_v2.o(i.BMP180_init)
-    i.BMP180_readmem                         0x080016b0   Section        0  my_bmp180_v2.o(i.BMP180_readmem)
-    i.BMP180_setMode                         0x080016c8   Section        0  my_bmp180_v2.o(i.BMP180_setMode)
-    i.BMP180_writemem                        0x080016d4   Section        0  my_bmp180_v2.o(i.BMP180_writemem)
-    i.BMP_init                               0x080016e6   Section        0  my_bmp180_v2.o(i.BMP_init)
-    i.GPIO_Init                              0x080016fe   Section        0  stm32f0xx_gpio.o(i.GPIO_Init)
-    i.GPIO_PinAFConfig                       0x0800178e   Section        0  stm32f0xx_gpio.o(i.GPIO_PinAFConfig)
-    i.GPIO_ReadInputDataBit                  0x080017d2   Section        0  stm32f0xx_gpio.o(i.GPIO_ReadInputDataBit)
-    i.GPIO_ResetBits                         0x080017e6   Section        0  stm32f0xx_gpio.o(i.GPIO_ResetBits)
-    i.GPIO_SetBits                           0x080017ea   Section        0  stm32f0xx_gpio.o(i.GPIO_SetBits)
-    i.HW_msb_init_Sensor                     0x080017f0   Section        0  msb.o(i.HW_msb_init_Sensor)
-    i.HW_msb_send                            0x08001888   Section        0  msb.o(i.HW_msb_send)
-    i.HW_msb_send_IT                         0x080018a8   Section        0  msb.o(i.HW_msb_send_IT)
-    i.HardFault_Handler                      0x080018d0   Section        0  stm32f0xx_it.o(i.HardFault_Handler)
-    i.IIC_Ack                                0x080018d4   Section        0  i2c_soft.o(i.IIC_Ack)
-    i.IIC_Init                               0x08001910   Section        0  i2c_soft.o(i.IIC_Init)
-    i.IIC_NAck                               0x0800194e   Section        0  i2c_soft.o(i.IIC_NAck)
-    i.IIC_Read_Byte                          0x0800198a   Section        0  i2c_soft.o(i.IIC_Read_Byte)
-    i.IIC_Send_Byte                          0x080019e8   Section        0  i2c_soft.o(i.IIC_Send_Byte)
-    i.IIC_Start                              0x08001a52   Section        0  i2c_soft.o(i.IIC_Start)
-    i.IIC_Stop                               0x08001a8e   Section        0  i2c_soft.o(i.IIC_Stop)
-    i.IIC_Wait_Ack                           0x08001aca   Section        0  i2c_soft.o(i.IIC_Wait_Ack)
-    i.IICreadBytes                           0x08001b26   Section        0  i2c_soft.o(i.IICreadBytes)
-    i.IICwriteByte                           0x08001b88   Section        0  i2c_soft.o(i.IICwriteByte)
-    i.IICwriteBytes                          0x08001b9c   Section        0  i2c_soft.o(i.IICwriteBytes)
-    i.MY_ALT_CAL                             0x08001be0   Section        0  my_bmp180_v2.o(i.MY_ALT_CAL)
-    i.MY_BMP180_Routing                      0x08001cbc   Section        0  my_bmp180_v2.o(i.MY_BMP180_Routing)
-    i.NMI_Handler                            0x08001e9c   Section        0  stm32f0xx_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x08001ea0   Section        0  stm32f0xx_misc.o(i.NVIC_Init)
-    i.PendSV_Handler                         0x08001f10   Section        0  stm32f0xx_it.o(i.PendSV_Handler)
-    i.RCC_AHBPeriphClockCmd                  0x08001f14   Section        0  stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd)
-    i.RCC_APB1PeriphResetCmd                 0x08001f34   Section        0  stm32f0xx_rcc.o(i.RCC_APB1PeriphResetCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08001f54   Section        0  stm32f0xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RCC_APB2PeriphResetCmd                 0x08001f74   Section        0  stm32f0xx_rcc.o(i.RCC_APB2PeriphResetCmd)
-    i.RCC_GetClocksFreq                      0x08001f94   Section        0  stm32f0xx_rcc.o(i.RCC_GetClocksFreq)
-    i.SDA_IN                                 0x080021dc   Section        0  i2c_soft.o(i.SDA_IN)
-    i.SDA_OUT                                0x080021f8   Section        0  i2c_soft.o(i.SDA_OUT)
-    i.SVC_Handler                            0x08002212   Section        0  stm32f0xx_it.o(i.SVC_Handler)
-    i.SetSysClock                            0x08002214   Section        0  system_stm32f0xx.o(i.SetSysClock)
-    SetSysClock                              0x08002215   Thumb Code   206  system_stm32f0xx.o(i.SetSysClock)
-    i.SysTick_Handler                        0x080022ec   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x080022f0   Section        0  system_stm32f0xx.o(i.SystemInit)
-    i.USART1_IRQHandler                      0x0800236c   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
-    i.USART_Cmd                              0x0800239c   Section        0  stm32f0xx_usart.o(i.USART_Cmd)
-    i.USART_DeInit                           0x080023b4   Section        0  stm32f0xx_usart.o(i.USART_DeInit)
-    i.USART_GetFlagStatus                    0x080024a4   Section        0  stm32f0xx_usart.o(i.USART_GetFlagStatus)
-    i.USART_GetITStatus                      0x080024b8   Section        0  stm32f0xx_usart.o(i.USART_GetITStatus)
-    i.USART_HalfDuplexCmd                    0x08002506   Section        0  stm32f0xx_usart.o(i.USART_HalfDuplexCmd)
-    i.USART_ITConfig                         0x0800251e   Section        0  stm32f0xx_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x08002560   Section        0  stm32f0xx_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08002658   Section        0  stm32f0xx_usart.o(i.USART_ReceiveData)
-    i.USART_SendData                         0x08002662   Section        0  stm32f0xx_usart.o(i.USART_SendData)
-    i.__ARM_fpclassify                       0x0800266c   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__kernel_poly                          0x08002698   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_divzero                  0x08002744   Section        0  dunder.o(i.__mathlib_dbl_divzero)
-    i.__mathlib_dbl_infnan                   0x08002758   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_infnan2                  0x08002762   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
-    i.__mathlib_dbl_invalid                  0x0800276a   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_overflow                 0x0800277c   Section        0  dunder.o(i.__mathlib_dbl_overflow)
-    i.__mathlib_dbl_underflow                0x08002790   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.delay_init                             0x080027a4   Section        0  delay.o(i.delay_init)
-    i.delay_ms                               0x080027dc   Section        0  delay.o(i.delay_ms)
-    i.delay_us                               0x0800281c   Section        0  delay.o(i.delay_us)
-    i.filter                                 0x0800285c   Section        0  my_bmp180_v2.o(i.filter)
-    i.log                                    0x080029d4   Section        0  log.o(i.log)
-    i.main                                   0x08002d28   Section        0  main.o(i.main)
-    i.mb_update                              0x08002db0   Section        0  msb.o(i.mb_update)
-    i.pow                                    0x08002dfc   Section        0  pow.o(i.pow)
-    i.sqrt                                   0x080037f8   Section        0  sqrt.o(i.sqrt)
-    x$fpl$deqf                               0x08003840   Section      100  deqf.o(x$fpl$deqf)
-    x$fpl$drleqf                             0x080038a4   Section      104  drlef.o(x$fpl$drleqf)
-    x$fpl$fadd                               0x0800390c   Section      140  faddsub.o(x$fpl$fadd)
-    _fadd1                                   0x08003919   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    x$fpl$feqf                               0x08003998   Section       84  feqf.o(x$fpl$feqf)
-    x$fpl$fmul                               0x080039ec   Section      176  fmul.o(x$fpl$fmul)
-    x$fpl$frsb                               0x08003a9c   Section       24  faddsub.o(x$fpl$frsb)
-    x$fpl$fsub                               0x08003ab4   Section      208  faddsub.o(x$fpl$fsub)
-    _fsub1                                   0x08003ac1   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    .constdata                               0x08003b84   Section      128  ddiv.o(.constdata)
-    x$fpl$usenofp                            0x08003b84   Section        0  usenofp.o(x$fpl$usenofp)
-    ddiv_reciptbl                            0x08003b84   Data         128  ddiv.o(.constdata)
-    .constdata                               0x08003c04   Section       64  fdiv.o(.constdata)
-    fdiv_tab                                 0x08003c04   Data          64  fdiv.o(.constdata)
-    .constdata                               0x08003c48   Section       56  log.o(.constdata)
-    Lg2                                      0x08003c48   Data          24  log.o(.constdata)
-    Lg                                       0x08003c60   Data          32  log.o(.constdata)
-    .constdata                               0x08003c80   Section      136  pow.o(.constdata)
-    bp                                       0x08003c80   Data          16  pow.o(.constdata)
-    dp_h                                     0x08003c90   Data          16  pow.o(.constdata)
-    dp_l                                     0x08003ca0   Data          16  pow.o(.constdata)
-    L                                        0x08003cb0   Data          48  pow.o(.constdata)
-    P                                        0x08003ce0   Data          40  pow.o(.constdata)
-    .constdata                               0x08003d08   Section        8  qnan.o(.constdata)
-    .data                                    0x20000000   Section       24  main.o(.data)
-    .data                                    0x20000018   Section        4  stm32f0xx_it.o(.data)
-    .data                                    0x2000001c   Section       16  stm32f0xx_rcc.o(.data)
-    APBAHBPrescTable                         0x2000001c   Data          16  stm32f0xx_rcc.o(.data)
-    .data                                    0x2000002c   Section        4  delay.o(.data)
-    fac_us                                   0x2000002c   Data           1  delay.o(.data)
-    fac_ms                                   0x2000002e   Data           2  delay.o(.data)
-    .data                                    0x20000030   Section       11  msb.o(.data)
-    .data                                    0x2000003c   Section      108  my_bmp180_v2.o(.data)
-    .bss                                     0x200000a8   Section      158  msb.o(.bss)
-    .bss                                     0x20000148   Section      240  my_bmp180_v2.o(.bss)
-    .bss                                     0x20000238   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000298   Section      512  startup_stm32f030.o(HEAP)
-    Heap_Mem                                 0x20000298   Data         512  startup_stm32f030.o(HEAP)
-    STACK                                    0x20000498   Section     1024  startup_stm32f030.o(STACK)
-    Stack_Mem                                0x20000498   Data        1024  startup_stm32f030.o(STACK)
-    __initial_sp                             0x20000898   Data           0  startup_stm32f030.o(STACK)
+    i.BMP180_readmem                         0x080016c8   Section        0  my_bmp180_v2.o(i.BMP180_readmem)
+    i.BMP180_setMode                         0x080016e0   Section        0  my_bmp180_v2.o(i.BMP180_setMode)
+    i.BMP180_writemem                        0x080016ec   Section        0  my_bmp180_v2.o(i.BMP180_writemem)
+    i.BMP_init                               0x080016fe   Section        0  my_bmp180_v2.o(i.BMP_init)
+    i.GPIO_Init                              0x08001716   Section        0  stm32f0xx_gpio.o(i.GPIO_Init)
+    i.GPIO_PinAFConfig                       0x080017a6   Section        0  stm32f0xx_gpio.o(i.GPIO_PinAFConfig)
+    i.GPIO_ReadInputDataBit                  0x080017ea   Section        0  stm32f0xx_gpio.o(i.GPIO_ReadInputDataBit)
+    i.GPIO_ResetBits                         0x080017fe   Section        0  stm32f0xx_gpio.o(i.GPIO_ResetBits)
+    i.GPIO_SetBits                           0x08001802   Section        0  stm32f0xx_gpio.o(i.GPIO_SetBits)
+    i.HW_msb_init_Sensor                     0x08001808   Section        0  msb.o(i.HW_msb_init_Sensor)
+    i.HW_msb_send                            0x080018a0   Section        0  msb.o(i.HW_msb_send)
+    i.HW_msb_send_IT                         0x080018c0   Section        0  msb.o(i.HW_msb_send_IT)
+    i.HardFault_Handler                      0x080018e8   Section        0  stm32f0xx_it.o(i.HardFault_Handler)
+    i.IIC_Ack                                0x080018ec   Section        0  i2c_soft.o(i.IIC_Ack)
+    i.IIC_Init                               0x08001928   Section        0  i2c_soft.o(i.IIC_Init)
+    i.IIC_NAck                               0x08001966   Section        0  i2c_soft.o(i.IIC_NAck)
+    i.IIC_Read_Byte                          0x080019a2   Section        0  i2c_soft.o(i.IIC_Read_Byte)
+    i.IIC_Send_Byte                          0x08001a00   Section        0  i2c_soft.o(i.IIC_Send_Byte)
+    i.IIC_Start                              0x08001a6a   Section        0  i2c_soft.o(i.IIC_Start)
+    i.IIC_Stop                               0x08001aa6   Section        0  i2c_soft.o(i.IIC_Stop)
+    i.IIC_Wait_Ack                           0x08001ae2   Section        0  i2c_soft.o(i.IIC_Wait_Ack)
+    i.IICreadBytes                           0x08001b3e   Section        0  i2c_soft.o(i.IICreadBytes)
+    i.IICwriteByte                           0x08001ba0   Section        0  i2c_soft.o(i.IICwriteByte)
+    i.IICwriteBytes                          0x08001bb4   Section        0  i2c_soft.o(i.IICwriteBytes)
+    i.MY_ALT_CAL                             0x08001bf8   Section        0  my_bmp180_v2.o(i.MY_ALT_CAL)
+    i.MY_BMP180_Routing                      0x08001cd4   Section        0  my_bmp180_v2.o(i.MY_BMP180_Routing)
+    i.NMI_Handler                            0x08001eb4   Section        0  stm32f0xx_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x08001eb8   Section        0  stm32f0xx_misc.o(i.NVIC_Init)
+    i.PendSV_Handler                         0x08001f28   Section        0  stm32f0xx_it.o(i.PendSV_Handler)
+    i.RCC_AHBPeriphClockCmd                  0x08001f2c   Section        0  stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd)
+    i.RCC_APB1PeriphResetCmd                 0x08001f4c   Section        0  stm32f0xx_rcc.o(i.RCC_APB1PeriphResetCmd)
+    i.RCC_APB2PeriphClockCmd                 0x08001f6c   Section        0  stm32f0xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RCC_APB2PeriphResetCmd                 0x08001f8c   Section        0  stm32f0xx_rcc.o(i.RCC_APB2PeriphResetCmd)
+    i.RCC_GetClocksFreq                      0x08001fac   Section        0  stm32f0xx_rcc.o(i.RCC_GetClocksFreq)
+    i.SDA_IN                                 0x080021f4   Section        0  i2c_soft.o(i.SDA_IN)
+    i.SDA_OUT                                0x08002210   Section        0  i2c_soft.o(i.SDA_OUT)
+    i.SVC_Handler                            0x0800222a   Section        0  stm32f0xx_it.o(i.SVC_Handler)
+    i.SetSysClock                            0x0800222c   Section        0  system_stm32f0xx.o(i.SetSysClock)
+    SetSysClock                              0x0800222d   Thumb Code   126  system_stm32f0xx.o(i.SetSysClock)
+    i.SysTick_Handler                        0x080022b4   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x080022b8   Section        0  system_stm32f0xx.o(i.SystemInit)
+    i.USART1_IRQHandler                      0x08002334   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
+    i.USART_Cmd                              0x0800235c   Section        0  stm32f0xx_usart.o(i.USART_Cmd)
+    i.USART_DeInit                           0x08002374   Section        0  stm32f0xx_usart.o(i.USART_DeInit)
+    i.USART_GetFlagStatus                    0x08002464   Section        0  stm32f0xx_usart.o(i.USART_GetFlagStatus)
+    i.USART_GetITStatus                      0x08002478   Section        0  stm32f0xx_usart.o(i.USART_GetITStatus)
+    i.USART_HalfDuplexCmd                    0x080024c6   Section        0  stm32f0xx_usart.o(i.USART_HalfDuplexCmd)
+    i.USART_ITConfig                         0x080024de   Section        0  stm32f0xx_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08002520   Section        0  stm32f0xx_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x08002618   Section        0  stm32f0xx_usart.o(i.USART_ReceiveData)
+    i.USART_SendData                         0x08002622   Section        0  stm32f0xx_usart.o(i.USART_SendData)
+    i.__ARM_fpclassify                       0x0800262c   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__kernel_poly                          0x08002658   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_divzero                  0x08002704   Section        0  dunder.o(i.__mathlib_dbl_divzero)
+    i.__mathlib_dbl_infnan                   0x08002718   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_infnan2                  0x08002722   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
+    i.__mathlib_dbl_invalid                  0x0800272a   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_overflow                 0x0800273c   Section        0  dunder.o(i.__mathlib_dbl_overflow)
+    i.__mathlib_dbl_underflow                0x08002750   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.delay_init                             0x08002764   Section        0  delay.o(i.delay_init)
+    i.delay_ms                               0x0800279c   Section        0  delay.o(i.delay_ms)
+    i.delay_us                               0x080027dc   Section        0  delay.o(i.delay_us)
+    i.filter                                 0x0800281c   Section        0  my_bmp180_v2.o(i.filter)
+    i.log                                    0x08002994   Section        0  log.o(i.log)
+    i.main                                   0x08002ce8   Section        0  main.o(i.main)
+    i.mb_update                              0x08002e24   Section        0  msb.o(i.mb_update)
+    i.pow                                    0x08002e70   Section        0  pow.o(i.pow)
+    i.sqrt                                   0x0800386c   Section        0  sqrt.o(i.sqrt)
+    x$fpl$deqf                               0x080038b4   Section      100  deqf.o(x$fpl$deqf)
+    x$fpl$drleqf                             0x08003918   Section      104  drlef.o(x$fpl$drleqf)
+    x$fpl$fadd                               0x08003980   Section      140  faddsub.o(x$fpl$fadd)
+    _fadd1                                   0x0800398d   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    x$fpl$feqf                               0x08003a0c   Section       84  feqf.o(x$fpl$feqf)
+    x$fpl$fmul                               0x08003a60   Section      176  fmul.o(x$fpl$fmul)
+    x$fpl$frsb                               0x08003b10   Section       24  faddsub.o(x$fpl$frsb)
+    x$fpl$fsub                               0x08003b28   Section      208  faddsub.o(x$fpl$fsub)
+    _fsub1                                   0x08003b35   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    .constdata                               0x08003bf8   Section      128  ddiv.o(.constdata)
+    x$fpl$usenofp                            0x08003bf8   Section        0  usenofp.o(x$fpl$usenofp)
+    ddiv_reciptbl                            0x08003bf8   Data         128  ddiv.o(.constdata)
+    .constdata                               0x08003c78   Section       64  fdiv.o(.constdata)
+    fdiv_tab                                 0x08003c78   Data          64  fdiv.o(.constdata)
+    .constdata                               0x08003cb8   Section       56  log.o(.constdata)
+    Lg2                                      0x08003cb8   Data          24  log.o(.constdata)
+    Lg                                       0x08003cd0   Data          32  log.o(.constdata)
+    .constdata                               0x08003cf0   Section      136  pow.o(.constdata)
+    bp                                       0x08003cf0   Data          16  pow.o(.constdata)
+    dp_h                                     0x08003d00   Data          16  pow.o(.constdata)
+    dp_l                                     0x08003d10   Data          16  pow.o(.constdata)
+    L                                        0x08003d20   Data          48  pow.o(.constdata)
+    P                                        0x08003d50   Data          40  pow.o(.constdata)
+    .constdata                               0x08003d78   Section        8  qnan.o(.constdata)
+    .data                                    0x20000000   Section       14  main.o(.data)
+    .data                                    0x2000000e   Section        4  stm32f0xx_it.o(.data)
+    .data                                    0x20000012   Section       16  stm32f0xx_rcc.o(.data)
+    APBAHBPrescTable                         0x20000012   Data          16  stm32f0xx_rcc.o(.data)
+    .data                                    0x20000022   Section        4  delay.o(.data)
+    fac_us                                   0x20000022   Data           1  delay.o(.data)
+    fac_ms                                   0x20000024   Data           2  delay.o(.data)
+    .data                                    0x20000026   Section       11  msb.o(.data)
+    .data                                    0x20000034   Section      108  my_bmp180_v2.o(.data)
+    .bss                                     0x200000a0   Section      158  msb.o(.bss)
+    .bss                                     0x20000140   Section      240  my_bmp180_v2.o(.bss)
+    .bss                                     0x20000230   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000290   Section      512  startup_stm32f030.o(HEAP)
+    Heap_Mem                                 0x20000290   Data         512  startup_stm32f030.o(HEAP)
+    STACK                                    0x20000490   Section     1024  startup_stm32f030.o(STACK)
+    Stack_Mem                                0x20000490   Data        1024  startup_stm32f030.o(STACK)
+    __initial_sp                             0x20000890   Data           0  startup_stm32f030.o(STACK)
 
     Global Symbols
 
@@ -1781,148 +1783,147 @@ Image Symbol Table
     __semihosting_library_function           0x080013cf   Thumb Code     0  indicate_semi.o(.text)
     BMP180_calcTrueTemperature               0x080013d1   Thumb Code    88  my_bmp180_v2.o(i.BMP180_calcTrueTemperature)
     BMP180_getCalData                        0x08001441   Thumb Code   306  my_bmp180_v2.o(i.BMP180_getCalData)
-    BMP180_init                              0x080015a5   Thumb Code   224  my_bmp180_v2.o(i.BMP180_init)
-    BMP180_readmem                           0x080016b1   Thumb Code    22  my_bmp180_v2.o(i.BMP180_readmem)
-    BMP180_setMode                           0x080016c9   Thumb Code     6  my_bmp180_v2.o(i.BMP180_setMode)
-    BMP180_writemem                          0x080016d5   Thumb Code    18  my_bmp180_v2.o(i.BMP180_writemem)
-    BMP_init                                 0x080016e7   Thumb Code    24  my_bmp180_v2.o(i.BMP_init)
-    GPIO_Init                                0x080016ff   Thumb Code   144  stm32f0xx_gpio.o(i.GPIO_Init)
-    GPIO_PinAFConfig                         0x0800178f   Thumb Code    68  stm32f0xx_gpio.o(i.GPIO_PinAFConfig)
-    GPIO_ReadInputDataBit                    0x080017d3   Thumb Code    20  stm32f0xx_gpio.o(i.GPIO_ReadInputDataBit)
-    GPIO_ResetBits                           0x080017e7   Thumb Code     4  stm32f0xx_gpio.o(i.GPIO_ResetBits)
-    GPIO_SetBits                             0x080017eb   Thumb Code     4  stm32f0xx_gpio.o(i.GPIO_SetBits)
-    HW_msb_init_Sensor                       0x080017f1   Thumb Code   142  msb.o(i.HW_msb_init_Sensor)
-    HW_msb_send                              0x08001889   Thumb Code    28  msb.o(i.HW_msb_send)
-    HW_msb_send_IT                           0x080018a9   Thumb Code    34  msb.o(i.HW_msb_send_IT)
-    HardFault_Handler                        0x080018d1   Thumb Code     4  stm32f0xx_it.o(i.HardFault_Handler)
-    IIC_Ack                                  0x080018d5   Thumb Code    60  i2c_soft.o(i.IIC_Ack)
-    IIC_Init                                 0x08001911   Thumb Code    62  i2c_soft.o(i.IIC_Init)
-    IIC_NAck                                 0x0800194f   Thumb Code    60  i2c_soft.o(i.IIC_NAck)
-    IIC_Read_Byte                            0x0800198b   Thumb Code    94  i2c_soft.o(i.IIC_Read_Byte)
-    IIC_Send_Byte                            0x080019e9   Thumb Code   106  i2c_soft.o(i.IIC_Send_Byte)
-    IIC_Start                                0x08001a53   Thumb Code    60  i2c_soft.o(i.IIC_Start)
-    IIC_Stop                                 0x08001a8f   Thumb Code    60  i2c_soft.o(i.IIC_Stop)
-    IIC_Wait_Ack                             0x08001acb   Thumb Code    92  i2c_soft.o(i.IIC_Wait_Ack)
-    IICreadBytes                             0x08001b27   Thumb Code    98  i2c_soft.o(i.IICreadBytes)
-    IICwriteByte                             0x08001b89   Thumb Code    20  i2c_soft.o(i.IICwriteByte)
-    IICwriteBytes                            0x08001b9d   Thumb Code    68  i2c_soft.o(i.IICwriteBytes)
-    MY_ALT_CAL                               0x08001be1   Thumb Code   180  my_bmp180_v2.o(i.MY_ALT_CAL)
-    MY_BMP180_Routing                        0x08001cbd   Thumb Code   402  my_bmp180_v2.o(i.MY_BMP180_Routing)
-    NMI_Handler                              0x08001e9d   Thumb Code     2  stm32f0xx_it.o(i.NMI_Handler)
-    NVIC_Init                                0x08001ea1   Thumb Code   106  stm32f0xx_misc.o(i.NVIC_Init)
-    PendSV_Handler                           0x08001f11   Thumb Code     2  stm32f0xx_it.o(i.PendSV_Handler)
-    RCC_AHBPeriphClockCmd                    0x08001f15   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd)
-    RCC_APB1PeriphResetCmd                   0x08001f35   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB1PeriphResetCmd)
-    RCC_APB2PeriphClockCmd                   0x08001f55   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    RCC_APB2PeriphResetCmd                   0x08001f75   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB2PeriphResetCmd)
-    RCC_GetClocksFreq                        0x08001f95   Thumb Code   554  stm32f0xx_rcc.o(i.RCC_GetClocksFreq)
-    SDA_IN                                   0x080021dd   Thumb Code    28  i2c_soft.o(i.SDA_IN)
-    SDA_OUT                                  0x080021f9   Thumb Code    26  i2c_soft.o(i.SDA_OUT)
-    SVC_Handler                              0x08002213   Thumb Code     2  stm32f0xx_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x080022ed   Thumb Code     2  stm32f0xx_it.o(i.SysTick_Handler)
-    SystemInit                               0x080022f1   Thumb Code   110  system_stm32f0xx.o(i.SystemInit)
-    USART1_IRQHandler                        0x0800236d   Thumb Code    32  stm32f0xx_it.o(i.USART1_IRQHandler)
-    USART_Cmd                                0x0800239d   Thumb Code    24  stm32f0xx_usart.o(i.USART_Cmd)
-    USART_DeInit                             0x080023b5   Thumb Code   206  stm32f0xx_usart.o(i.USART_DeInit)
-    USART_GetFlagStatus                      0x080024a5   Thumb Code    20  stm32f0xx_usart.o(i.USART_GetFlagStatus)
-    USART_GetITStatus                        0x080024b9   Thumb Code    78  stm32f0xx_usart.o(i.USART_GetITStatus)
-    USART_HalfDuplexCmd                      0x08002507   Thumb Code    24  stm32f0xx_usart.o(i.USART_HalfDuplexCmd)
-    USART_ITConfig                           0x0800251f   Thumb Code    66  stm32f0xx_usart.o(i.USART_ITConfig)
-    USART_Init                               0x08002561   Thumb Code   226  stm32f0xx_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08002659   Thumb Code    10  stm32f0xx_usart.o(i.USART_ReceiveData)
-    USART_SendData                           0x08002663   Thumb Code     8  stm32f0xx_usart.o(i.USART_SendData)
-    __ARM_fpclassify                         0x0800266d   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    __kernel_poly                            0x08002699   Thumb Code   172  poly.o(i.__kernel_poly)
-    __mathlib_dbl_divzero                    0x08002745   Thumb Code    16  dunder.o(i.__mathlib_dbl_divzero)
-    __mathlib_dbl_infnan                     0x08002759   Thumb Code    10  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_infnan2                    0x08002763   Thumb Code     8  dunder.o(i.__mathlib_dbl_infnan2)
-    __mathlib_dbl_invalid                    0x0800276b   Thumb Code    16  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_overflow                   0x0800277d   Thumb Code    16  dunder.o(i.__mathlib_dbl_overflow)
-    __mathlib_dbl_underflow                  0x08002791   Thumb Code    14  dunder.o(i.__mathlib_dbl_underflow)
-    delay_init                               0x080027a5   Thumb Code    42  delay.o(i.delay_init)
-    delay_ms                                 0x080027dd   Thumb Code    54  delay.o(i.delay_ms)
-    delay_us                                 0x0800281d   Thumb Code    54  delay.o(i.delay_us)
-    filter                                   0x0800285d   Thumb Code   326  my_bmp180_v2.o(i.filter)
-    log                                      0x080029d5   Thumb Code   790  log.o(i.log)
-    main                                     0x08002d29   Thumb Code   116  main.o(i.main)
-    mb_update                                0x08002db1   Thumb Code    66  msb.o(i.mb_update)
-    pow                                      0x08002dfd   Thumb Code  2548  pow.o(i.pow)
-    sqrt                                     0x080037f9   Thumb Code    66  sqrt.o(i.sqrt)
-    __aeabi_cdcmpeq                          0x08003841   Thumb Code     0  deqf.o(x$fpl$deqf)
-    _dcmpeq                                  0x08003841   Thumb Code    94  deqf.o(x$fpl$deqf)
-    __aeabi_cdrcmple                         0x080038a5   Thumb Code     0  drlef.o(x$fpl$drleqf)
-    _drcmple                                 0x080038a5   Thumb Code   100  drlef.o(x$fpl$drleqf)
-    __aeabi_fadd                             0x0800390d   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    _fadd                                    0x0800390d   Thumb Code   134  faddsub.o(x$fpl$fadd)
-    __aeabi_cfcmpeq                          0x08003999   Thumb Code     0  feqf.o(x$fpl$feqf)
-    _fcmpeq                                  0x08003999   Thumb Code    78  feqf.o(x$fpl$feqf)
-    __aeabi_fmul                             0x080039ed   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x080039ed   Thumb Code   172  fmul.o(x$fpl$fmul)
-    __aeabi_frsub                            0x08003a9d   Thumb Code     0  faddsub.o(x$fpl$frsb)
-    _frsb                                    0x08003a9d   Thumb Code    24  faddsub.o(x$fpl$frsb)
-    __aeabi_fsub                             0x08003ab5   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    _fsub                                    0x08003ab5   Thumb Code   204  faddsub.o(x$fpl$fsub)
-    __I$use$fp                               0x08003b84   Number         0  usenofp.o(x$fpl$usenofp)
-    __mathlib_zero                           0x08003d08   Data           8  qnan.o(.constdata)
-    Region$$Table$$Base                      0x08003d10   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003d30   Number         0  anon$$obj.o(Region$$Table)
-    a                                        0x20000000   Data           4  main.o(.data)
-    b                                        0x20000004   Data           4  main.o(.data)
-    c                                        0x20000008   Data           4  main.o(.data)
-    test                                     0x2000000c   Data           1  main.o(.data)
-    EE                                       0x20000010   Data           4  main.o(.data)
-    hhhh                                     0x20000014   Data           4  main.o(.data)
-    MSB_DATA                                 0x20000018   Data           1  stm32f0xx_it.o(.data)
-    HW_MSB_STAT                              0x20000019   Data           1  stm32f0xx_it.o(.data)
-    HW_MSB_DATA                              0x2000001a   Data           1  stm32f0xx_it.o(.data)
-    HW_MSB_ERROR                             0x2000001b   Data           1  stm32f0xx_it.o(.data)
-    MB_DATA_Update_Status                    0x20000030   Data           1  msb.o(.data)
-    amount_order                             0x20000032   Data           2  msb.o(.data)
-    amount_sensor                            0x20000034   Data           1  msb.o(.data)
-    sensor_1                                 0x20000035   Data           6  msb.o(.data)
-    ac1                                      0x2000003c   Data           2  my_bmp180_v2.o(.data)
-    ac2                                      0x2000003e   Data           2  my_bmp180_v2.o(.data)
-    ac3                                      0x20000040   Data           2  my_bmp180_v2.o(.data)
-    b1                                       0x20000042   Data           2  my_bmp180_v2.o(.data)
-    b2                                       0x20000044   Data           2  my_bmp180_v2.o(.data)
-    mb                                       0x20000046   Data           2  my_bmp180_v2.o(.data)
-    mc                                       0x20000048   Data           2  my_bmp180_v2.o(.data)
-    md                                       0x2000004a   Data           2  my_bmp180_v2.o(.data)
-    ac4                                      0x2000004c   Data           2  my_bmp180_v2.o(.data)
-    ac5                                      0x2000004e   Data           2  my_bmp180_v2.o(.data)
-    ac6                                      0x20000050   Data           2  my_bmp180_v2.o(.data)
-    b5                                       0x20000054   Data           4  my_bmp180_v2.o(.data)
-    _buff                                    0x20000058   Data           3  my_bmp180_v2.o(.data)
-    _oss                                     0x2000005c   Data           2  my_bmp180_v2.o(.data)
-    my_T                                     0x20000060   Data           4  my_bmp180_v2.o(.data)
-    my_P                                     0x20000064   Data           4  my_bmp180_v2.o(.data)
-    my_P0                                    0x20000068   Data           4  my_bmp180_v2.o(.data)
-    my_A                                     0x2000006c   Data           4  my_bmp180_v2.o(.data)
-    K                                        0x20000070   Data           4  my_bmp180_v2.o(.data)
-    _cm_Offset                               0x20000074   Data           4  my_bmp180_v2.o(.data)
-    _Pa_Offset                               0x20000078   Data           4  my_bmp180_v2.o(.data)
-    _param_datum                             0x2000007c   Data           4  my_bmp180_v2.o(.data)
-    _param_centimeters                       0x20000080   Data           4  my_bmp180_v2.o(.data)
-    BPM180_ST                                0x20000084   Data           1  my_bmp180_v2.o(.data)
-    last_Temperature                         0x20000088   Data           4  my_bmp180_v2.o(.data)
-    last_Pressure                            0x2000008c   Data           4  my_bmp180_v2.o(.data)
-    last_Alt                                 0x20000090   Data           4  my_bmp180_v2.o(.data)
-    E                                        0x20000094   Data           4  my_bmp180_v2.o(.data)
-    Var                                      0x20000098   Data           4  my_bmp180_v2.o(.data)
-    E_quad                                   0x2000009c   Data           4  my_bmp180_v2.o(.data)
-    K_filter                                 0x200000a0   Data           4  my_bmp180_v2.o(.data)
-    K0                                       0x200000a4   Data           4  my_bmp180_v2.o(.data)
-    mb_data                                  0x200000a8   Data          64  msb.o(.bss)
-    sensor_decoder_data                      0x200000e8   Data          64  msb.o(.bss)
-    MB_DATA_115200                           0x20000128   Data          30  msb.o(.bss)
-    BMP180_FIFO                              0x20000148   Data          88  my_bmp180_v2.o(.bss)
-    BMP180_FIFOH                             0x200001a0   Data          84  my_bmp180_v2.o(.bss)
-    BMP180_DATA                              0x200001f4   Data          16  my_bmp180_v2.o(.bss)
-    Pa                                       0x20000204   Data          20  my_bmp180_v2.o(.bss)
-    Pa_quad                                  0x20000218   Data          20  my_bmp180_v2.o(.bss)
-    Ergibnis                                 0x2000022c   Data          12  my_bmp180_v2.o(.bss)
-    __libspace_start                         0x20000238   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000298   Data           0  libspace.o(.bss)
+    BMP180_init                              0x080015a5   Thumb Code   246  my_bmp180_v2.o(i.BMP180_init)
+    BMP180_readmem                           0x080016c9   Thumb Code    22  my_bmp180_v2.o(i.BMP180_readmem)
+    BMP180_setMode                           0x080016e1   Thumb Code     6  my_bmp180_v2.o(i.BMP180_setMode)
+    BMP180_writemem                          0x080016ed   Thumb Code    18  my_bmp180_v2.o(i.BMP180_writemem)
+    BMP_init                                 0x080016ff   Thumb Code    24  my_bmp180_v2.o(i.BMP_init)
+    GPIO_Init                                0x08001717   Thumb Code   144  stm32f0xx_gpio.o(i.GPIO_Init)
+    GPIO_PinAFConfig                         0x080017a7   Thumb Code    68  stm32f0xx_gpio.o(i.GPIO_PinAFConfig)
+    GPIO_ReadInputDataBit                    0x080017eb   Thumb Code    20  stm32f0xx_gpio.o(i.GPIO_ReadInputDataBit)
+    GPIO_ResetBits                           0x080017ff   Thumb Code     4  stm32f0xx_gpio.o(i.GPIO_ResetBits)
+    GPIO_SetBits                             0x08001803   Thumb Code     4  stm32f0xx_gpio.o(i.GPIO_SetBits)
+    HW_msb_init_Sensor                       0x08001809   Thumb Code   142  msb.o(i.HW_msb_init_Sensor)
+    HW_msb_send                              0x080018a1   Thumb Code    28  msb.o(i.HW_msb_send)
+    HW_msb_send_IT                           0x080018c1   Thumb Code    34  msb.o(i.HW_msb_send_IT)
+    HardFault_Handler                        0x080018e9   Thumb Code     4  stm32f0xx_it.o(i.HardFault_Handler)
+    IIC_Ack                                  0x080018ed   Thumb Code    60  i2c_soft.o(i.IIC_Ack)
+    IIC_Init                                 0x08001929   Thumb Code    62  i2c_soft.o(i.IIC_Init)
+    IIC_NAck                                 0x08001967   Thumb Code    60  i2c_soft.o(i.IIC_NAck)
+    IIC_Read_Byte                            0x080019a3   Thumb Code    94  i2c_soft.o(i.IIC_Read_Byte)
+    IIC_Send_Byte                            0x08001a01   Thumb Code   106  i2c_soft.o(i.IIC_Send_Byte)
+    IIC_Start                                0x08001a6b   Thumb Code    60  i2c_soft.o(i.IIC_Start)
+    IIC_Stop                                 0x08001aa7   Thumb Code    60  i2c_soft.o(i.IIC_Stop)
+    IIC_Wait_Ack                             0x08001ae3   Thumb Code    92  i2c_soft.o(i.IIC_Wait_Ack)
+    IICreadBytes                             0x08001b3f   Thumb Code    98  i2c_soft.o(i.IICreadBytes)
+    IICwriteByte                             0x08001ba1   Thumb Code    20  i2c_soft.o(i.IICwriteByte)
+    IICwriteBytes                            0x08001bb5   Thumb Code    68  i2c_soft.o(i.IICwriteBytes)
+    MY_ALT_CAL                               0x08001bf9   Thumb Code   180  my_bmp180_v2.o(i.MY_ALT_CAL)
+    MY_BMP180_Routing                        0x08001cd5   Thumb Code   402  my_bmp180_v2.o(i.MY_BMP180_Routing)
+    NMI_Handler                              0x08001eb5   Thumb Code     2  stm32f0xx_it.o(i.NMI_Handler)
+    NVIC_Init                                0x08001eb9   Thumb Code   106  stm32f0xx_misc.o(i.NVIC_Init)
+    PendSV_Handler                           0x08001f29   Thumb Code     2  stm32f0xx_it.o(i.PendSV_Handler)
+    RCC_AHBPeriphClockCmd                    0x08001f2d   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd)
+    RCC_APB1PeriphResetCmd                   0x08001f4d   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB1PeriphResetCmd)
+    RCC_APB2PeriphClockCmd                   0x08001f6d   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    RCC_APB2PeriphResetCmd                   0x08001f8d   Thumb Code    28  stm32f0xx_rcc.o(i.RCC_APB2PeriphResetCmd)
+    RCC_GetClocksFreq                        0x08001fad   Thumb Code   554  stm32f0xx_rcc.o(i.RCC_GetClocksFreq)
+    SDA_IN                                   0x080021f5   Thumb Code    28  i2c_soft.o(i.SDA_IN)
+    SDA_OUT                                  0x08002211   Thumb Code    26  i2c_soft.o(i.SDA_OUT)
+    SVC_Handler                              0x0800222b   Thumb Code     2  stm32f0xx_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x080022b5   Thumb Code     2  stm32f0xx_it.o(i.SysTick_Handler)
+    SystemInit                               0x080022b9   Thumb Code   110  system_stm32f0xx.o(i.SystemInit)
+    USART1_IRQHandler                        0x08002335   Thumb Code    26  stm32f0xx_it.o(i.USART1_IRQHandler)
+    USART_Cmd                                0x0800235d   Thumb Code    24  stm32f0xx_usart.o(i.USART_Cmd)
+    USART_DeInit                             0x08002375   Thumb Code   206  stm32f0xx_usart.o(i.USART_DeInit)
+    USART_GetFlagStatus                      0x08002465   Thumb Code    20  stm32f0xx_usart.o(i.USART_GetFlagStatus)
+    USART_GetITStatus                        0x08002479   Thumb Code    78  stm32f0xx_usart.o(i.USART_GetITStatus)
+    USART_HalfDuplexCmd                      0x080024c7   Thumb Code    24  stm32f0xx_usart.o(i.USART_HalfDuplexCmd)
+    USART_ITConfig                           0x080024df   Thumb Code    66  stm32f0xx_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08002521   Thumb Code   226  stm32f0xx_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x08002619   Thumb Code    10  stm32f0xx_usart.o(i.USART_ReceiveData)
+    USART_SendData                           0x08002623   Thumb Code     8  stm32f0xx_usart.o(i.USART_SendData)
+    __ARM_fpclassify                         0x0800262d   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    __kernel_poly                            0x08002659   Thumb Code   172  poly.o(i.__kernel_poly)
+    __mathlib_dbl_divzero                    0x08002705   Thumb Code    16  dunder.o(i.__mathlib_dbl_divzero)
+    __mathlib_dbl_infnan                     0x08002719   Thumb Code    10  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_infnan2                    0x08002723   Thumb Code     8  dunder.o(i.__mathlib_dbl_infnan2)
+    __mathlib_dbl_invalid                    0x0800272b   Thumb Code    16  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_overflow                   0x0800273d   Thumb Code    16  dunder.o(i.__mathlib_dbl_overflow)
+    __mathlib_dbl_underflow                  0x08002751   Thumb Code    14  dunder.o(i.__mathlib_dbl_underflow)
+    delay_init                               0x08002765   Thumb Code    42  delay.o(i.delay_init)
+    delay_ms                                 0x0800279d   Thumb Code    54  delay.o(i.delay_ms)
+    delay_us                                 0x080027dd   Thumb Code    54  delay.o(i.delay_us)
+    filter                                   0x0800281d   Thumb Code   326  my_bmp180_v2.o(i.filter)
+    log                                      0x08002995   Thumb Code   790  log.o(i.log)
+    main                                     0x08002ce9   Thumb Code   278  main.o(i.main)
+    mb_update                                0x08002e25   Thumb Code    66  msb.o(i.mb_update)
+    pow                                      0x08002e71   Thumb Code  2548  pow.o(i.pow)
+    sqrt                                     0x0800386d   Thumb Code    66  sqrt.o(i.sqrt)
+    __aeabi_cdcmpeq                          0x080038b5   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x080038b5   Thumb Code    94  deqf.o(x$fpl$deqf)
+    __aeabi_cdrcmple                         0x08003919   Thumb Code     0  drlef.o(x$fpl$drleqf)
+    _drcmple                                 0x08003919   Thumb Code   100  drlef.o(x$fpl$drleqf)
+    __aeabi_fadd                             0x08003981   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    _fadd                                    0x08003981   Thumb Code   134  faddsub.o(x$fpl$fadd)
+    __aeabi_cfcmpeq                          0x08003a0d   Thumb Code     0  feqf.o(x$fpl$feqf)
+    _fcmpeq                                  0x08003a0d   Thumb Code    78  feqf.o(x$fpl$feqf)
+    __aeabi_fmul                             0x08003a61   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08003a61   Thumb Code   172  fmul.o(x$fpl$fmul)
+    __aeabi_frsub                            0x08003b11   Thumb Code     0  faddsub.o(x$fpl$frsb)
+    _frsb                                    0x08003b11   Thumb Code    24  faddsub.o(x$fpl$frsb)
+    __aeabi_fsub                             0x08003b29   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    _fsub                                    0x08003b29   Thumb Code   204  faddsub.o(x$fpl$fsub)
+    __I$use$fp                               0x08003bf8   Number         0  usenofp.o(x$fpl$usenofp)
+    __mathlib_zero                           0x08003d78   Data           8  qnan.o(.constdata)
+    Region$$Table$$Base                      0x08003d80   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003da0   Number         0  anon$$obj.o(Region$$Table)
+    temp1                                    0x20000000   Data           4  main.o(.data)
+    temp2                                    0x20000004   Data           4  main.o(.data)
+    ALT                                      0x20000008   Data           2  main.o(.data)
+    TEMP                                     0x2000000a   Data           2  main.o(.data)
+    MAX_ALT                                  0x2000000c   Data           2  main.o(.data)
+    MSB_DATA                                 0x2000000e   Data           1  stm32f0xx_it.o(.data)
+    HW_MSB_STAT                              0x2000000f   Data           1  stm32f0xx_it.o(.data)
+    HW_MSB_DATA                              0x20000010   Data           1  stm32f0xx_it.o(.data)
+    HW_MSB_ERROR                             0x20000011   Data           1  stm32f0xx_it.o(.data)
+    MB_DATA_Update_Status                    0x20000026   Data           1  msb.o(.data)
+    amount_order                             0x20000028   Data           2  msb.o(.data)
+    amount_sensor                            0x2000002a   Data           1  msb.o(.data)
+    sensor_1                                 0x2000002b   Data           6  msb.o(.data)
+    ac1                                      0x20000034   Data           2  my_bmp180_v2.o(.data)
+    ac2                                      0x20000036   Data           2  my_bmp180_v2.o(.data)
+    ac3                                      0x20000038   Data           2  my_bmp180_v2.o(.data)
+    b1                                       0x2000003a   Data           2  my_bmp180_v2.o(.data)
+    b2                                       0x2000003c   Data           2  my_bmp180_v2.o(.data)
+    mb                                       0x2000003e   Data           2  my_bmp180_v2.o(.data)
+    mc                                       0x20000040   Data           2  my_bmp180_v2.o(.data)
+    md                                       0x20000042   Data           2  my_bmp180_v2.o(.data)
+    ac4                                      0x20000044   Data           2  my_bmp180_v2.o(.data)
+    ac5                                      0x20000046   Data           2  my_bmp180_v2.o(.data)
+    ac6                                      0x20000048   Data           2  my_bmp180_v2.o(.data)
+    b5                                       0x2000004c   Data           4  my_bmp180_v2.o(.data)
+    _buff                                    0x20000050   Data           3  my_bmp180_v2.o(.data)
+    _oss                                     0x20000054   Data           2  my_bmp180_v2.o(.data)
+    my_T                                     0x20000058   Data           4  my_bmp180_v2.o(.data)
+    my_P                                     0x2000005c   Data           4  my_bmp180_v2.o(.data)
+    my_P0                                    0x20000060   Data           4  my_bmp180_v2.o(.data)
+    my_A                                     0x20000064   Data           4  my_bmp180_v2.o(.data)
+    K                                        0x20000068   Data           4  my_bmp180_v2.o(.data)
+    _cm_Offset                               0x2000006c   Data           4  my_bmp180_v2.o(.data)
+    _Pa_Offset                               0x20000070   Data           4  my_bmp180_v2.o(.data)
+    _param_datum                             0x20000074   Data           4  my_bmp180_v2.o(.data)
+    _param_centimeters                       0x20000078   Data           4  my_bmp180_v2.o(.data)
+    BPM180_ST                                0x2000007c   Data           1  my_bmp180_v2.o(.data)
+    last_Temperature                         0x20000080   Data           4  my_bmp180_v2.o(.data)
+    last_Pressure                            0x20000084   Data           4  my_bmp180_v2.o(.data)
+    last_Alt                                 0x20000088   Data           4  my_bmp180_v2.o(.data)
+    E                                        0x2000008c   Data           4  my_bmp180_v2.o(.data)
+    Var                                      0x20000090   Data           4  my_bmp180_v2.o(.data)
+    E_quad                                   0x20000094   Data           4  my_bmp180_v2.o(.data)
+    K_filter                                 0x20000098   Data           4  my_bmp180_v2.o(.data)
+    K0                                       0x2000009c   Data           4  my_bmp180_v2.o(.data)
+    mb_data                                  0x200000a0   Data          64  msb.o(.bss)
+    sensor_decoder_data                      0x200000e0   Data          64  msb.o(.bss)
+    MB_DATA_115200                           0x20000120   Data          30  msb.o(.bss)
+    BMP180_FIFO                              0x20000140   Data          88  my_bmp180_v2.o(.bss)
+    BMP180_FIFOH                             0x20000198   Data          84  my_bmp180_v2.o(.bss)
+    BMP180_DATA                              0x200001ec   Data          16  my_bmp180_v2.o(.bss)
+    Pa                                       0x200001fc   Data          20  my_bmp180_v2.o(.bss)
+    Pa_quad                                  0x20000210   Data          20  my_bmp180_v2.o(.bss)
+    Ergibnis                                 0x20000224   Data          12  my_bmp180_v2.o(.bss)
+    __libspace_start                         0x20000230   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000290   Data           0  libspace.o(.bss)
 
 
 
@@ -1932,9 +1933,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000b5
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003dd8, Max: 0x00004000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003e40, Max: 0x00004000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003d30, Max: 0x00004000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003da0, Max: 0x00004000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2018,115 +2019,114 @@ Memory Map of the image
     0x080013ce   0x00000002   PAD
     0x080013d0   0x00000070   Code   RO         4268    i.BMP180_calcTrueTemperature  my_bmp180_v2.o
     0x08001440   0x00000164   Code   RO         4269    i.BMP180_getCalData  my_bmp180_v2.o
-    0x080015a4   0x0000010c   Code   RO         4270    i.BMP180_init       my_bmp180_v2.o
-    0x080016b0   0x00000016   Code   RO         4272    i.BMP180_readmem    my_bmp180_v2.o
-    0x080016c6   0x00000002   PAD
-    0x080016c8   0x0000000c   Code   RO         4273    i.BMP180_setMode    my_bmp180_v2.o
-    0x080016d4   0x00000012   Code   RO         4274    i.BMP180_writemem   my_bmp180_v2.o
-    0x080016e6   0x00000018   Code   RO         4275    i.BMP_init          my_bmp180_v2.o
-    0x080016fe   0x00000090   Code   RO         1512    i.GPIO_Init         stm32f0xx_gpio.o
-    0x0800178e   0x00000044   Code   RO         1513    i.GPIO_PinAFConfig  stm32f0xx_gpio.o
-    0x080017d2   0x00000014   Code   RO         1516    i.GPIO_ReadInputDataBit  stm32f0xx_gpio.o
-    0x080017e6   0x00000004   Code   RO         1519    i.GPIO_ResetBits    stm32f0xx_gpio.o
-    0x080017ea   0x00000004   Code   RO         1520    i.GPIO_SetBits      stm32f0xx_gpio.o
-    0x080017ee   0x00000002   PAD
-    0x080017f0   0x00000098   Code   RO         4222    i.HW_msb_init_Sensor  msb.o
-    0x08001888   0x00000020   Code   RO         4223    i.HW_msb_send       msb.o
-    0x080018a8   0x00000028   Code   RO         4224    i.HW_msb_send_IT    msb.o
-    0x080018d0   0x00000004   Code   RO          145    i.HardFault_Handler  stm32f0xx_it.o
-    0x080018d4   0x0000003c   Code   RO         4075    i.IIC_Ack           i2c_soft.o
-    0x08001910   0x0000003e   Code   RO         4076    i.IIC_Init          i2c_soft.o
-    0x0800194e   0x0000003c   Code   RO         4077    i.IIC_NAck          i2c_soft.o
-    0x0800198a   0x0000005e   Code   RO         4078    i.IIC_Read_Byte     i2c_soft.o
-    0x080019e8   0x0000006a   Code   RO         4079    i.IIC_Send_Byte     i2c_soft.o
-    0x08001a52   0x0000003c   Code   RO         4080    i.IIC_Start         i2c_soft.o
-    0x08001a8e   0x0000003c   Code   RO         4081    i.IIC_Stop          i2c_soft.o
-    0x08001aca   0x0000005c   Code   RO         4082    i.IIC_Wait_Ack      i2c_soft.o
-    0x08001b26   0x00000062   Code   RO         4084    i.IICreadBytes      i2c_soft.o
-    0x08001b88   0x00000014   Code   RO         4087    i.IICwriteByte      i2c_soft.o
-    0x08001b9c   0x00000044   Code   RO         4088    i.IICwriteBytes     i2c_soft.o
-    0x08001be0   0x000000dc   Code   RO         4276    i.MY_ALT_CAL        my_bmp180_v2.o
-    0x08001cbc   0x000001e0   Code   RO         4277    i.MY_BMP180_Routing  my_bmp180_v2.o
-    0x08001e9c   0x00000002   Code   RO          146    i.NMI_Handler       stm32f0xx_it.o
-    0x08001e9e   0x00000002   PAD
-    0x08001ea0   0x00000070   Code   RO         1925    i.NVIC_Init         stm32f0xx_misc.o
-    0x08001f10   0x00000002   Code   RO          147    i.PendSV_Handler    stm32f0xx_it.o
-    0x08001f12   0x00000002   PAD
-    0x08001f14   0x00000020   Code   RO         2032    i.RCC_AHBPeriphClockCmd  stm32f0xx_rcc.o
-    0x08001f34   0x00000020   Code   RO         2035    i.RCC_APB1PeriphResetCmd  stm32f0xx_rcc.o
-    0x08001f54   0x00000020   Code   RO         2036    i.RCC_APB2PeriphClockCmd  stm32f0xx_rcc.o
-    0x08001f74   0x00000020   Code   RO         2037    i.RCC_APB2PeriphResetCmd  stm32f0xx_rcc.o
-    0x08001f94   0x00000248   Code   RO         2046    i.RCC_GetClocksFreq  stm32f0xx_rcc.o
-    0x080021dc   0x0000001c   Code   RO         4090    i.SDA_IN            i2c_soft.o
-    0x080021f8   0x0000001a   Code   RO         4091    i.SDA_OUT           i2c_soft.o
-    0x08002212   0x00000002   Code   RO          148    i.SVC_Handler       stm32f0xx_it.o
-    0x08002214   0x000000d8   Code   RO          211    i.SetSysClock       system_stm32f0xx.o
-    0x080022ec   0x00000002   Code   RO          149    i.SysTick_Handler   stm32f0xx_it.o
-    0x080022ee   0x00000002   PAD
-    0x080022f0   0x0000007c   Code   RO          213    i.SystemInit        system_stm32f0xx.o
-    0x0800236c   0x00000030   Code   RO          150    i.USART1_IRQHandler  stm32f0xx_it.o
-    0x0800239c   0x00000018   Code   RO         3472    i.USART_Cmd         stm32f0xx_usart.o
-    0x080023b4   0x000000f0   Code   RO         3478    i.USART_DeInit      stm32f0xx_usart.o
-    0x080024a4   0x00000014   Code   RO         3480    i.USART_GetFlagStatus  stm32f0xx_usart.o
-    0x080024b8   0x0000004e   Code   RO         3481    i.USART_GetITStatus  stm32f0xx_usart.o
-    0x08002506   0x00000018   Code   RO         3482    i.USART_HalfDuplexCmd  stm32f0xx_usart.o
-    0x0800251e   0x00000042   Code   RO         3483    i.USART_ITConfig    stm32f0xx_usart.o
-    0x08002560   0x000000f8   Code   RO         3484    i.USART_Init        stm32f0xx_usart.o
-    0x08002658   0x0000000a   Code   RO         3496    i.USART_ReceiveData  stm32f0xx_usart.o
-    0x08002662   0x00000008   Code   RO         3501    i.USART_SendData    stm32f0xx_usart.o
-    0x0800266a   0x00000002   PAD
-    0x0800266c   0x0000002c   Code   RO         4557    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
-    0x08002698   0x000000ac   Code   RO         4559    i.__kernel_poly     m_ps.l(poly.o)
-    0x08002744   0x00000014   Code   RO         4543    i.__mathlib_dbl_divzero  m_ps.l(dunder.o)
-    0x08002758   0x0000000a   Code   RO         4544    i.__mathlib_dbl_infnan  m_ps.l(dunder.o)
-    0x08002762   0x00000008   Code   RO         4545    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
-    0x0800276a   0x00000010   Code   RO         4546    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
-    0x0800277a   0x00000002   PAD
-    0x0800277c   0x00000014   Code   RO         4547    i.__mathlib_dbl_overflow  m_ps.l(dunder.o)
-    0x08002790   0x00000014   Code   RO         4549    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
-    0x080027a4   0x00000038   Code   RO         4037    i.delay_init        delay.o
-    0x080027dc   0x00000040   Code   RO         4038    i.delay_ms          delay.o
-    0x0800281c   0x00000040   Code   RO         4039    i.delay_us          delay.o
-    0x0800285c   0x00000178   Code   RO         4278    i.filter            my_bmp180_v2.o
-    0x080029d4   0x00000354   Code   RO         4496    i.log               m_ps.l(log.o)
-    0x08002d28   0x00000088   Code   RO            3    i.main              main.o
-    0x08002db0   0x0000004c   Code   RO         4225    i.mb_update         msb.o
-    0x08002dfc   0x000009fc   Code   RO         4506    i.pow               m_ps.l(pow.o)
-    0x080037f8   0x00000048   Code   RO         4516    i.sqrt              m_ps.l(sqrt.o)
-    0x08003840   0x00000064   Code   RO         4466    x$fpl$deqf          fz_ps.l(deqf.o)
-    0x080038a4   0x00000068   Code   RO         4534    x$fpl$drleqf        fz_ps.l(drlef.o)
-    0x0800390c   0x0000008c   Code   RO         4478    x$fpl$fadd          fz_ps.l(faddsub.o)
-    0x08003998   0x00000054   Code   RO         4487    x$fpl$feqf          fz_ps.l(feqf.o)
-    0x080039ec   0x000000b0   Code   RO         4493    x$fpl$fmul          fz_ps.l(fmul.o)
-    0x08003a9c   0x00000018   Code   RO         4479    x$fpl$frsb          fz_ps.l(faddsub.o)
-    0x08003ab4   0x000000d0   Code   RO         4480    x$fpl$fsub          fz_ps.l(faddsub.o)
-    0x08003b84   0x00000000   Code   RO         4542    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x08003b84   0x00000080   Data   RO         4464    .constdata          fz_ps.l(ddiv.o)
-    0x08003c04   0x00000040   Data   RO         4485    .constdata          fz_ps.l(fdiv.o)
-    0x08003c44   0x00000004   PAD
-    0x08003c48   0x00000038   Data   RO         4497    .constdata          m_ps.l(log.o)
-    0x08003c80   0x00000088   Data   RO         4507    .constdata          m_ps.l(pow.o)
-    0x08003d08   0x00000008   Data   RO         4561    .constdata          m_ps.l(qnan.o)
-    0x08003d10   0x00000020   Data   RO         4739    Region$$Table       anon$$obj.o
+    0x080015a4   0x00000124   Code   RO         4270    i.BMP180_init       my_bmp180_v2.o
+    0x080016c8   0x00000016   Code   RO         4272    i.BMP180_readmem    my_bmp180_v2.o
+    0x080016de   0x00000002   PAD
+    0x080016e0   0x0000000c   Code   RO         4273    i.BMP180_setMode    my_bmp180_v2.o
+    0x080016ec   0x00000012   Code   RO         4274    i.BMP180_writemem   my_bmp180_v2.o
+    0x080016fe   0x00000018   Code   RO         4275    i.BMP_init          my_bmp180_v2.o
+    0x08001716   0x00000090   Code   RO         1512    i.GPIO_Init         stm32f0xx_gpio.o
+    0x080017a6   0x00000044   Code   RO         1513    i.GPIO_PinAFConfig  stm32f0xx_gpio.o
+    0x080017ea   0x00000014   Code   RO         1516    i.GPIO_ReadInputDataBit  stm32f0xx_gpio.o
+    0x080017fe   0x00000004   Code   RO         1519    i.GPIO_ResetBits    stm32f0xx_gpio.o
+    0x08001802   0x00000004   Code   RO         1520    i.GPIO_SetBits      stm32f0xx_gpio.o
+    0x08001806   0x00000002   PAD
+    0x08001808   0x00000098   Code   RO         4222    i.HW_msb_init_Sensor  msb.o
+    0x080018a0   0x00000020   Code   RO         4223    i.HW_msb_send       msb.o
+    0x080018c0   0x00000028   Code   RO         4224    i.HW_msb_send_IT    msb.o
+    0x080018e8   0x00000004   Code   RO          145    i.HardFault_Handler  stm32f0xx_it.o
+    0x080018ec   0x0000003c   Code   RO         4075    i.IIC_Ack           i2c_soft.o
+    0x08001928   0x0000003e   Code   RO         4076    i.IIC_Init          i2c_soft.o
+    0x08001966   0x0000003c   Code   RO         4077    i.IIC_NAck          i2c_soft.o
+    0x080019a2   0x0000005e   Code   RO         4078    i.IIC_Read_Byte     i2c_soft.o
+    0x08001a00   0x0000006a   Code   RO         4079    i.IIC_Send_Byte     i2c_soft.o
+    0x08001a6a   0x0000003c   Code   RO         4080    i.IIC_Start         i2c_soft.o
+    0x08001aa6   0x0000003c   Code   RO         4081    i.IIC_Stop          i2c_soft.o
+    0x08001ae2   0x0000005c   Code   RO         4082    i.IIC_Wait_Ack      i2c_soft.o
+    0x08001b3e   0x00000062   Code   RO         4084    i.IICreadBytes      i2c_soft.o
+    0x08001ba0   0x00000014   Code   RO         4087    i.IICwriteByte      i2c_soft.o
+    0x08001bb4   0x00000044   Code   RO         4088    i.IICwriteBytes     i2c_soft.o
+    0x08001bf8   0x000000dc   Code   RO         4276    i.MY_ALT_CAL        my_bmp180_v2.o
+    0x08001cd4   0x000001e0   Code   RO         4277    i.MY_BMP180_Routing  my_bmp180_v2.o
+    0x08001eb4   0x00000002   Code   RO          146    i.NMI_Handler       stm32f0xx_it.o
+    0x08001eb6   0x00000002   PAD
+    0x08001eb8   0x00000070   Code   RO         1925    i.NVIC_Init         stm32f0xx_misc.o
+    0x08001f28   0x00000002   Code   RO          147    i.PendSV_Handler    stm32f0xx_it.o
+    0x08001f2a   0x00000002   PAD
+    0x08001f2c   0x00000020   Code   RO         2032    i.RCC_AHBPeriphClockCmd  stm32f0xx_rcc.o
+    0x08001f4c   0x00000020   Code   RO         2035    i.RCC_APB1PeriphResetCmd  stm32f0xx_rcc.o
+    0x08001f6c   0x00000020   Code   RO         2036    i.RCC_APB2PeriphClockCmd  stm32f0xx_rcc.o
+    0x08001f8c   0x00000020   Code   RO         2037    i.RCC_APB2PeriphResetCmd  stm32f0xx_rcc.o
+    0x08001fac   0x00000248   Code   RO         2046    i.RCC_GetClocksFreq  stm32f0xx_rcc.o
+    0x080021f4   0x0000001c   Code   RO         4090    i.SDA_IN            i2c_soft.o
+    0x08002210   0x0000001a   Code   RO         4091    i.SDA_OUT           i2c_soft.o
+    0x0800222a   0x00000002   Code   RO          148    i.SVC_Handler       stm32f0xx_it.o
+    0x0800222c   0x00000088   Code   RO          211    i.SetSysClock       system_stm32f0xx.o
+    0x080022b4   0x00000002   Code   RO          149    i.SysTick_Handler   stm32f0xx_it.o
+    0x080022b6   0x00000002   PAD
+    0x080022b8   0x0000007c   Code   RO          213    i.SystemInit        system_stm32f0xx.o
+    0x08002334   0x00000028   Code   RO          150    i.USART1_IRQHandler  stm32f0xx_it.o
+    0x0800235c   0x00000018   Code   RO         3472    i.USART_Cmd         stm32f0xx_usart.o
+    0x08002374   0x000000f0   Code   RO         3478    i.USART_DeInit      stm32f0xx_usart.o
+    0x08002464   0x00000014   Code   RO         3480    i.USART_GetFlagStatus  stm32f0xx_usart.o
+    0x08002478   0x0000004e   Code   RO         3481    i.USART_GetITStatus  stm32f0xx_usart.o
+    0x080024c6   0x00000018   Code   RO         3482    i.USART_HalfDuplexCmd  stm32f0xx_usart.o
+    0x080024de   0x00000042   Code   RO         3483    i.USART_ITConfig    stm32f0xx_usart.o
+    0x08002520   0x000000f8   Code   RO         3484    i.USART_Init        stm32f0xx_usart.o
+    0x08002618   0x0000000a   Code   RO         3496    i.USART_ReceiveData  stm32f0xx_usart.o
+    0x08002622   0x00000008   Code   RO         3501    i.USART_SendData    stm32f0xx_usart.o
+    0x0800262a   0x00000002   PAD
+    0x0800262c   0x0000002c   Code   RO         4557    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
+    0x08002658   0x000000ac   Code   RO         4559    i.__kernel_poly     m_ps.l(poly.o)
+    0x08002704   0x00000014   Code   RO         4543    i.__mathlib_dbl_divzero  m_ps.l(dunder.o)
+    0x08002718   0x0000000a   Code   RO         4544    i.__mathlib_dbl_infnan  m_ps.l(dunder.o)
+    0x08002722   0x00000008   Code   RO         4545    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
+    0x0800272a   0x00000010   Code   RO         4546    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
+    0x0800273a   0x00000002   PAD
+    0x0800273c   0x00000014   Code   RO         4547    i.__mathlib_dbl_overflow  m_ps.l(dunder.o)
+    0x08002750   0x00000014   Code   RO         4549    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
+    0x08002764   0x00000038   Code   RO         4037    i.delay_init        delay.o
+    0x0800279c   0x00000040   Code   RO         4038    i.delay_ms          delay.o
+    0x080027dc   0x00000040   Code   RO         4039    i.delay_us          delay.o
+    0x0800281c   0x00000178   Code   RO         4278    i.filter            my_bmp180_v2.o
+    0x08002994   0x00000354   Code   RO         4496    i.log               m_ps.l(log.o)
+    0x08002ce8   0x0000013c   Code   RO            3    i.main              main.o
+    0x08002e24   0x0000004c   Code   RO         4225    i.mb_update         msb.o
+    0x08002e70   0x000009fc   Code   RO         4506    i.pow               m_ps.l(pow.o)
+    0x0800386c   0x00000048   Code   RO         4516    i.sqrt              m_ps.l(sqrt.o)
+    0x080038b4   0x00000064   Code   RO         4466    x$fpl$deqf          fz_ps.l(deqf.o)
+    0x08003918   0x00000068   Code   RO         4534    x$fpl$drleqf        fz_ps.l(drlef.o)
+    0x08003980   0x0000008c   Code   RO         4478    x$fpl$fadd          fz_ps.l(faddsub.o)
+    0x08003a0c   0x00000054   Code   RO         4487    x$fpl$feqf          fz_ps.l(feqf.o)
+    0x08003a60   0x000000b0   Code   RO         4493    x$fpl$fmul          fz_ps.l(fmul.o)
+    0x08003b10   0x00000018   Code   RO         4479    x$fpl$frsb          fz_ps.l(faddsub.o)
+    0x08003b28   0x000000d0   Code   RO         4480    x$fpl$fsub          fz_ps.l(faddsub.o)
+    0x08003bf8   0x00000000   Code   RO         4542    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x08003bf8   0x00000080   Data   RO         4464    .constdata          fz_ps.l(ddiv.o)
+    0x08003c78   0x00000040   Data   RO         4485    .constdata          fz_ps.l(fdiv.o)
+    0x08003cb8   0x00000038   Data   RO         4497    .constdata          m_ps.l(log.o)
+    0x08003cf0   0x00000088   Data   RO         4507    .constdata          m_ps.l(pow.o)
+    0x08003d78   0x00000008   Data   RO         4561    .constdata          m_ps.l(qnan.o)
+    0x08003d80   0x00000020   Data   RO         4739    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000898, Max: 0x00001000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000890, Max: 0x00001000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000018   Data   RW            4    .data               main.o
-    0x20000018   0x00000004   Data   RW          151    .data               stm32f0xx_it.o
-    0x2000001c   0x00000010   Data   RW         2072    .data               stm32f0xx_rcc.o
-    0x2000002c   0x00000004   Data   RW         4040    .data               delay.o
-    0x20000030   0x0000000b   Data   RW         4227    .data               msb.o
-    0x2000003b   0x00000001   PAD
-    0x2000003c   0x0000006c   Data   RW         4280    .data               my_bmp180_v2.o
-    0x200000a8   0x0000009e   Zero   RW         4226    .bss                msb.o
-    0x20000146   0x00000002   PAD
-    0x20000148   0x000000f0   Zero   RW         4279    .bss                my_bmp180_v2.o
-    0x20000238   0x00000060   Zero   RW         4595    .bss                c_p.l(libspace.o)
-    0x20000298   0x00000200   Zero   RW          203    HEAP                startup_stm32f030.o
-    0x20000498   0x00000400   Zero   RW          202    STACK               startup_stm32f030.o
+    0x20000000   0x0000000e   Data   RW            4    .data               main.o
+    0x2000000e   0x00000004   Data   RW          151    .data               stm32f0xx_it.o
+    0x20000012   0x00000010   Data   RW         2072    .data               stm32f0xx_rcc.o
+    0x20000022   0x00000004   Data   RW         4040    .data               delay.o
+    0x20000026   0x0000000b   Data   RW         4227    .data               msb.o
+    0x20000031   0x00000003   PAD
+    0x20000034   0x0000006c   Data   RW         4280    .data               my_bmp180_v2.o
+    0x200000a0   0x0000009e   Zero   RW         4226    .bss                msb.o
+    0x2000013e   0x00000002   PAD
+    0x20000140   0x000000f0   Zero   RW         4279    .bss                my_bmp180_v2.o
+    0x20000230   0x00000060   Zero   RW         4595    .bss                c_p.l(libspace.o)
+    0x20000290   0x00000200   Zero   RW          203    HEAP                startup_stm32f030.o
+    0x20000490   0x00000400   Zero   RW          202    STACK               startup_stm32f030.o
 
 
 ==============================================================================
@@ -2138,21 +2138,21 @@ Image component sizes
 
        184         34          0          4          0       1471   delay.o
        834          0          0          0          0       6943   i2c_soft.o
-       136         20          0         24          0     191320   main.o
+       316         38          0         14          0     191158   main.o
        300         30          0         11        158       4073   msb.o
-      1888        292          0        108        240       7436   my_bmp180_v2.o
+      1912        294          0        108        240       7468   my_bmp180_v2.o
        116         56        180          0       1536        640   startup_stm32f030.o
        240          0          0          0          0       3795   stm32f0xx_gpio.o
-        60         16          0          4          0       2871   stm32f0xx_it.o
+        52         14          0          4          0       2863   stm32f0xx_it.o
        112          6          0          0          0       1064   stm32f0xx_misc.o
        712         46          0         16          0       4523   stm32f0xx_rcc.o
        718         56          0          0          0       7122   stm32f0xx_usart.o
-       340         24          0          0          0       1325   system_stm32f0xx.o
+       260         24          0          0          0       1293   system_stm32f0xx.o
 
     ----------------------------------------------------------------------
-      5652        580        212        168       1936     232583   Object Totals
+      5768        598        212        160       1936     232413   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        12          0          0          1          2          0   (incl. Padding)
+        12          0          0          3          2          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2213,8 +2213,8 @@ Image component sizes
         72          6          0          0          0         76   sqrt.o
 
     ----------------------------------------------------------------------
-      9404        456        396          0         96       3824   Library Totals
-        10          0          4          0          0          0   (incl. Padding)
+      9404        456        392          0         96       3824   Library Totals
+        10          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2225,7 +2225,7 @@ Image component sizes
       3790        282        200          0          0        996   m_ps.l
 
     ----------------------------------------------------------------------
-      9404        456        396          0         96       3824   Library Totals
+      9404        456        392          0         96       3824   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -2234,15 +2234,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15056       1036        608        168       2032     232107   Grand Totals
-     15056       1036        608        168       2032     232107   ELF Image Totals
-     15056       1036        608        168          0          0   ROM Totals
+     15172       1054        604        160       2032     231937   Grand Totals
+     15172       1054        604        160       2032     231937   ELF Image Totals
+     15172       1054        604        160          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15664 (  15.30kB)
-    Total RW  Size (RW Data + ZI Data)              2200 (   2.15kB)
-    Total ROM Size (Code + RO Data + RW Data)      15832 (  15.46kB)
+    Total RO  Size (Code + RO Data)                15776 (  15.41kB)
+    Total RW  Size (RW Data + ZI Data)              2192 (   2.14kB)
+    Total ROM Size (Code + RO Data + RW Data)      15936 (  15.56kB)
 
 ==============================================================================
 

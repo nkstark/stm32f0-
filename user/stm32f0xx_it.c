@@ -69,9 +69,11 @@ volatile u8 HW_MSB_ERROR=0;
 		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 		{
 			  HW_MSB_DATA = USART_ReceiveData(USART1);  
-			HW_MSB_STAT=1;
+//			HW_MSB_STAT=1;
 		}
-	}
+	} 
+	
+	//串口一中断的作用在于：总线状态和总线地址的接收
 	
 	
 //	void USART1_IRQHandler(void)
