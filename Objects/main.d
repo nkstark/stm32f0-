@@ -37,3 +37,4 @@
 .\objects\main.o: .\HW_DRIVER\msb.h
 .\objects\main.o: .\user\stm32f0xx_it.h
 .\objects\main.o: .\user\main.h
+.\objects\main.o: .\HW_DRIVER\led.h

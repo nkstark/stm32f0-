@@ -1,0 +1,60 @@
+T10E8 004:828 SEGGER J-Link V4.98e Log File (0001ms, 0862ms total)
+T10E8 004:828 DLL Compiled: May  5 2015 11:00:52 (0001ms, 0862ms total)
+T10E8 004:828 Logging started @ 2015-12-13 13:01 (0001ms, 0862ms total)
+T10E8 004:829 JLINK_SetWarnOutHandler(...) (0000ms, 0862ms total)
+T10E8 004:829 JLINK_OpenEx(...)
+Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+Hardware: V7.00
+S/N: 20090928
+Feature(s): RDI,FlashDL,FlashBP,JFlash,GDBFull  returns O.K. (0264ms, 1126ms total)
+T10E8 005:093 JLINK_SetErrorOutHandler(...) (0000ms, 1126ms total)
+T10E8 005:093 JLINK_ExecCommand("ProjectFile = "C:\Users\nksta\Desktop\m0\git\JLinkSettings.ini"", ...)  returns 0x00 (0001ms, 1127ms total)
+T10E8 005:094 JLINK_ExecCommand("Device = STM32F030F4", ...)Device "STM32F030F4" selected.  returns 0x00 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_ExecCommand("DisableConnectionTimeout", ...)  returns 0x01 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetHardwareVersion()  returns 0x11170 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetDLLVersion()  returns 49805 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetFirmwareString(...) (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetDLLVersion()  returns 49805 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetCompileDateTime() (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetFirmwareString(...) (0000ms, 1127ms total)
+T10E8 005:094 JLINK_GetHardwareVersion()  returns 0x11170 (0000ms, 1127ms total)
+T10E8 005:094 JLINK_TIF_Select(JLINKARM_TIF_SWD)  returns 0x00 (0001ms, 1128ms total)
+T10E8 005:095 JLINK_SetSpeed(5000) (0000ms, 1128ms total)
+T10E8 005:095 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)  returns JLINKARM_RESET_TYPE_NORMAL (0000ms, 1128ms total)
+T10E8 005:095 JLINK_Reset() >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+              JLINK_GetId() >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0x00000000 (0309ms, 2258ms total)
+T10E8 006:225 JLINK_GetId() >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0x00000000 (0310ms, 2568ms total)
+T10E8 006:542 JLINK_GetFirmwareString(...) (0000ms, 2568ms total)
+T10E8 026:256 JLINK_GetDLLVersion()  returns 49805 (0000ms, 2568ms total)
+T10E8 026:256 JLINK_CORE_GetFound() >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0x00 (0310ms, 2878ms total)
+T10E8 026:566 JLINK_GetDebugInfo(0x100) >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0xFFFFFFFF (0309ms, 3187ms total)
+T10E8 028:349 JLINK_SetSpeed(50000) (0000ms, 3187ms total)
+T10E8 028:349 JLINK_WriteMem(0x20000000, 0x000A Bytes, ...) - Data: 55 00 00 00 AA 00 00 00 12 00 >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0xFFFFFFFF (0820ms, 4007ms total)
+T10E8 029:170 JLINK_ReadMem (0x20000000, 0x000A Bytes, ...) >0x108 TIF> >0x108 TIF>STM32F0xxx: Can not connect to CPU. Trying connect under reset. >0x108 TIF> >0x108 TIF>
+  ***** Error: STM32F0xxx: Connecting to CPU via connect under reset failed.
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                JLINK_EMU_HasCapEx(0x0000002C)  returns 0x00 (0000ms, 0000ms total)
+                returns 0x01 (0308ms, 4315ms total)
+T10E8 029:478 JLINK_SetSpeed(33000)

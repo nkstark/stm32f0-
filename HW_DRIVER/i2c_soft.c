@@ -11,8 +11,11 @@
 #include "i2c_soft.h"
 #include "delay.h"
 
-#define i2c_sda GPIO_Pin_4
-#define i2c_scl GPIO_Pin_3
+//#define i2c_sda GPIO_Pin_4
+//#define i2c_scl GPIO_Pin_3
+
+#define i2c_sda GPIO_Pin_5
+#define i2c_scl GPIO_Pin_6
 
 //#define bmp180_vcc GPIO_Pin_
 //#define bmp180_gnd GPIO_Pin_2

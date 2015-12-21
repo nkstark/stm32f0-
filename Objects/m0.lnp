@@ -4,7 +4,6 @@
 ".\objects\startup_stm32f030.o"
 ".\objects\system_stm32f0xx.o"
 ".\objects\stm32f0xx_adc.o"
-".\objects\stm32f0xx_can.o"
 ".\objects\stm32f0xx_cec.o"
 ".\objects\stm32f0xx_comp.o"
 ".\objects\stm32f0xx_crc.o"
