@@ -2,7 +2,7 @@
 .\objects\i2c_soft.o: HW_DRIVER\i2c_soft.h
 .\objects\i2c_soft.o: .\cmsis\Include\stm32f0xx.h
 .\objects\i2c_soft.o: .\cmsis\core_cm0.h
-.\objects\i2c_soft.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\i2c_soft.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\i2c_soft.o: .\cmsis\core_cmInstr.h
 .\objects\i2c_soft.o: .\cmsis\core_cmFunc.h
 .\objects\i2c_soft.o: .\cmsis\Include\system_stm32f0xx.h
