@@ -119,14 +119,13 @@ int main(void)
 //								 USART_Cmd(USART1, ENABLE);
 //	//							USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 //	}
-<<<<<<< HEAD
+
 }					
-=======
-}			
+		
 
 
 //fack you
->>>>>>> origin/master
+
 
 
 	
