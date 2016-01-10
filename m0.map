@@ -1,4 +1,4 @@
-Component: ARM Compiler 5.06 (build 20) Tool: armlink [4d35a3]
+Component: ARM Compiler 5.06 update 1 (build 61) Tool: armlink [4d35a8]
 
 ==============================================================================
 
@@ -2113,23 +2113,23 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       124         30          0          4          0       1471   delay.o
-       774          0          0          0          0       6991   i2c_soft.o
-       184         18          0          0          0       1061   led.o
-       276         24          0         12          0     211270   main.o
-       268         26          0          1         64       4069   msb.o
-      1350        122          0         92         48       7428   my_bmp180_v2.o
-       116         56        180          0       1536        640   startup_stm32f030.o
-       166          0          0          0          0       3807   stm32f0xx_gpio.o
-        50         12          0          1          0       2863   stm32f0xx_it.o
-        80          8          0          0          0       1132   stm32f0xx_misc.o
-       544         60          0         16          0       5292   stm32f0xx_rcc.o
-       290         60          0          0          0       4085   stm32f0xx_tim.o
-       594         52          0          0          0       7522   stm32f0xx_usart.o
-       252         20          0          0          0       1353   system_stm32f0xx.o
+       124         30          0          4          0       1519   delay.o
+       774          0          0          0          0       7159   i2c_soft.o
+       184         18          0          0          0       1085   led.o
+       276         24          0         12          0     211378   main.o
+       268         26          0          1         64       4153   msb.o
+      1350        122          0         92         48       7572   my_bmp180_v2.o
+       116         56        180          0       1536        652   startup_stm32f030.o
+       166          0          0          0          0       3879   stm32f0xx_gpio.o
+        50         12          0          1          0       2959   stm32f0xx_it.o
+        80          8          0          0          0       1156   stm32f0xx_misc.o
+       544         60          0         16          0       5388   stm32f0xx_rcc.o
+       290         60          0          0          0       4157   stm32f0xx_tim.o
+       594         52          0          0          0       7642   stm32f0xx_usart.o
+       252         20          0          0          0       1389   system_stm32f0xx.o
 
     ----------------------------------------------------------------------
-      5080        488        212        128       1648     258984   Object Totals
+      5080        488        212        128       1648     260088   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          2          0          0   (incl. Padding)
 
@@ -2210,8 +2210,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     14284        930        604        128       1744     258128   Grand Totals
-     14284        930        604        128       1744     258128   ELF Image Totals
+     14284        930        604        128       1744     259232   Grand Totals
+     14284        930        604        128       1744     259232   ELF Image Totals
      14284        930        604        128          0          0   ROM Totals
 
 ==============================================================================

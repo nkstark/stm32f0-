@@ -2,7 +2,7 @@
 .\objects\my_bmp180_v2.o: HW_DRIVER\my_bmp180_v2.h
 .\objects\my_bmp180_v2.o: .\cmsis\Include\stm32f0xx.h
 .\objects\my_bmp180_v2.o: .\cmsis\core_cm0.h
-.\objects\my_bmp180_v2.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\my_bmp180_v2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\my_bmp180_v2.o: .\cmsis\core_cmInstr.h
 .\objects\my_bmp180_v2.o: .\cmsis\core_cmFunc.h
 .\objects\my_bmp180_v2.o: .\cmsis\Include\system_stm32f0xx.h
@@ -33,4 +33,4 @@
 .\objects\my_bmp180_v2.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\objects\my_bmp180_v2.o: HW_DRIVER\i2c_soft.h
 .\objects\my_bmp180_v2.o: HW_DRIVER\delay.h
-.\objects\my_bmp180_v2.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\my_bmp180_v2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

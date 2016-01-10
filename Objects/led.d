@@ -3,7 +3,7 @@
 .\objects\led.o: .\STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
 .\objects\led.o: .\cmsis\Include\stm32f0xx.h
 .\objects\led.o: .\cmsis\core_cm0.h
-.\objects\led.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\led.o: .\cmsis\core_cmInstr.h
 .\objects\led.o: .\cmsis\core_cmFunc.h
 .\objects\led.o: .\cmsis\Include\system_stm32f0xx.h

@@ -3,7 +3,7 @@
 .\objects\stm32f0xx_it.o: user\main.h
 .\objects\stm32f0xx_it.o: .\cmsis\Include\stm32f0xx.h
 .\objects\stm32f0xx_it.o: .\cmsis\core_cm0.h
-.\objects\stm32f0xx_it.o: e:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stm32f0xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f0xx_it.o: .\cmsis\core_cmInstr.h
 .\objects\stm32f0xx_it.o: .\cmsis\core_cmFunc.h
 .\objects\stm32f0xx_it.o: .\cmsis\Include\system_stm32f0xx.h

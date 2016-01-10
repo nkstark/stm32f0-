@@ -100,7 +100,29 @@ int main(void)
 //							else if(led_stat!=0x55)
 //								LED_PWM(500,10);
 	}
-}					
+
+//	while(1)
+//	{
+//		//		//						USART_ITConfig(USART1, USART_IT_RXNE, DISABLE);									//禁止MSB中断
+//								
+//								 USART_Cmd(USART1, DISABLE);
+////								LED_PWM(500,100);
+//								temp1=filter();																						//开始新的测量
+//								MY_ALT_CAL(calculate_Methode_1,temp1);								//测量值计算高度
+//								ALT=my_A/100;
+//								if(ALT>MAX_ALT)
+//								{
+//									MAX_ALT=ALT;
+//								}
+//								TEMP=my_T;
+//								work_stat=(work_stat<<2)+0x01; 
+//								 USART_Cmd(USART1, ENABLE);
+//	//							USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+//	}
+}			
+
+
+//fack you
 
 
 	
